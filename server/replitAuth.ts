@@ -78,10 +78,20 @@ export async function setupAuth(app: Express) {
     tokens: client.TokenEndpointResponse & client.TokenEndpointResponseHelpers,
     verified: passport.AuthenticateCallback
   ) => {
-    const user = {};
-    updateUserSession(user, tokens);
-    await upsertUser(tokens.claims());
-    verified(null, user);
+    try {
+      const claims = tokens.claims();
+      console.log("Auth verify - claims received:", { sub: claims.sub, email: claims.email });
+      
+      const user = { id: claims.sub };
+      updateUserSession(user, tokens);
+      await upsertUser(claims);
+      
+      console.log("Auth verify - user created:", { id: user.id, hasTokens: !!user.access_token });
+      verified(null, user);
+    } catch (error) {
+      console.error("Auth verify error:", error);
+      verified(error, null);
+    }
   };
 
   for (const domain of process.env
@@ -98,8 +108,15 @@ export async function setupAuth(app: Express) {
     passport.use(strategy);
   }
 
-  passport.serializeUser((user: Express.User, cb) => cb(null, user));
-  passport.deserializeUser((user: Express.User, cb) => cb(null, user));
+  passport.serializeUser((user: Express.User, cb) => {
+    console.log("Serializing user:", { id: user.id, hasTokens: !!user.access_token });
+    cb(null, user);
+  });
+  
+  passport.deserializeUser((user: Express.User, cb) => {
+    console.log("Deserializing user:", { id: user.id, hasTokens: !!user.access_token });
+    cb(null, user);
+  });
 
   app.get("/api/login", (req, res, next) => {
     passport.authenticate(`replitauth:${req.hostname}`, {
@@ -109,10 +126,18 @@ export async function setupAuth(app: Express) {
   });
 
   app.get("/api/callback", (req, res, next) => {
+    console.log("Callback route hit for hostname:", req.hostname);
     passport.authenticate(`replitauth:${req.hostname}`, {
       successReturnToOrRedirect: "/",
       failureRedirect: "/api/login",
-    })(req, res, next);
+    })(req, res, (err) => {
+      if (err) {
+        console.error("Callback authentication error:", err);
+        return res.redirect("/api/login");
+      }
+      console.log("Callback authentication successful, user:", req.user?.id);
+      next();
+    });
   });
 
   app.get("/api/logout", (req, res) => {

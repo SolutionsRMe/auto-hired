@@ -192,9 +192,9 @@ export default function Landing() {
               </ul>
               <Button 
                 className="w-full bg-secondary text-primary hover:bg-secondary/90 transition-all duration-200 transform hover:scale-105" 
-                onClick={() => window.location.href = '/api/login'}
+                onClick={() => window.location.href = '/google-auth'}
               >
-                Get Started
+                Sign In with Google
               </Button>
             </CardContent>
           </Card>

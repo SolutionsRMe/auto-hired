@@ -1,0 +1,112 @@
+colors.css
+css
+Copy
+Edit
+:root {
+  --color-primary: #1E2A38;
+  --color-secondary: #00C2A8;
+  --color-accent: #FF6B6B;
+
+  --color-bg-light: #F8F9FA;
+  --color-bg-dark: #121212;
+  --color-surface: #E9ECEF;
+
+  --color-text-primary: #212529;
+  --color-text-secondary: #6C757D;
+
+  --color-success: #2ECC71;
+  --color-warning: #F1C40F;
+  --color-error: #E74C3C;
+}
+
+body {
+  background-color: var(--color-bg-light);
+  color: var(--color-text-primary);
+}
+palette.scss (if using SCSS/SASS)
+scss
+Copy
+Edit
+$color-primary: #1E2A38;
+$color-secondary: #00C2A8;
+$color-accent: #FF6B6B;
+
+$color-bg-light: #F8F9FA;
+$color-bg-dark: #121212;
+$color-surface: #E9ECEF;
+
+$color-text-primary: #212529;
+$color-text-secondary: #6C757D;
+
+$color-success: #2ECC71;
+$color-warning: #F1C40F;
+$color-error: #E74C3C;
+Then you can reference them in your SCSS with color: $color-primary; or in HTML via var(--color-primary).
+
+🧩 Option 2: TailwindCSS Theme Extension
+If using Tailwind, add this to tailwind.config.js:
+
+js
+Copy
+Edit
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#1E2A38',
+        secondary: '#00C2A8',
+        accent: '#FF6B6B',
+        bgLight: '#F8F9FA',
+        bgDark: '#121212',
+        surface: '#E9ECEF',
+        textPrimary: '#212529',
+        textSecondary: '#6C757D',
+        success: '#2ECC71',
+        warning: '#F1C40F',
+        error: '#E74C3C',
+      },
+    },
+  },
+};
+Then in your HTML/JSX:
+
+html
+Copy
+Edit
+<div class="bg-primary text-bgLight">AutoHired</div>
+🧪 Option 3: Chakra UI Theme Extension
+Create a custom theme like so (usually in theme.js):
+
+js
+Copy
+Edit
+import { extendTheme } from "@chakra-ui/react";
+
+const theme = extendTheme({
+  colors: {
+    primary: "#1E2A38",
+    secondary: "#00C2A8",
+    accent: "#FF6B6B",
+    bgLight: "#F8F9FA",
+    bgDark: "#121212",
+    surface: "#E9ECEF",
+    textPrimary: "#212529",
+    textSecondary: "#6C757D",
+    success: "#2ECC71",
+    warning: "#F1C40F",
+    error: "#E74C3C",
+  },
+});
+
+export default theme;
+Then wrap your app in the ChakraProvider with this theme:
+
+js
+Copy
+Edit
+import { ChakraProvider } from "@chakra-ui/react";
+import theme from "./theme";
+
+<ChakraProvider theme={theme}>
+  <App />
+</ChakraProvider>

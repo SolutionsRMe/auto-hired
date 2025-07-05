@@ -5,6 +5,7 @@ import { Briefcase, Shield, Zap, Users, AlertCircle } from "lucide-react";
 import { useFirebaseAuth } from "@/hooks/useFirebaseAuth";
 import { useLocation } from "wouter";
 import { isFirebaseConfigured } from "@/lib/firebase";
+import DebugEnv from "@/debug-env";
 
 export default function GoogleAuth() {
   const { user, isLoading, signIn } = useFirebaseAuth();
@@ -35,6 +36,7 @@ export default function GoogleAuth() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col">
+      <DebugEnv />
       <div className="flex-1 flex items-center justify-center px-4 py-12">
         <div className="max-w-md w-full space-y-8">
           {/* Logo */}

@@ -297,6 +297,79 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Initialize sample data
+  app.post('/api/init-sample-data', isAuthenticated, async (req: any, res) => {
+    try {
+      // Create sample job listings
+      const sampleJobs = [
+        {
+          title: "Frontend Developer",
+          company: "TechCorp",
+          location: "San Francisco, CA",
+          type: "Full-time",
+          remote: true,
+          salary: "$90,000 - $120,000",
+          description: "Build amazing user interfaces with React and TypeScript",
+          requirements: "3+ years React experience, TypeScript, CSS",
+          url: "https://example.com/job1"
+        },
+        {
+          title: "Full Stack Engineer",
+          company: "StartupXYZ",
+          location: "New York, NY",
+          type: "Full-time",
+          remote: false,
+          salary: "$100,000 - $130,000",
+          description: "Work on both frontend and backend systems",
+          requirements: "Node.js, React, PostgreSQL, 5+ years experience",
+          url: "https://example.com/job2"
+        },
+        {
+          title: "React Developer",
+          company: "WebSolutions",
+          location: "Remote",
+          type: "Contract",
+          remote: true,
+          salary: "$75 - $85/hour",
+          description: "Create responsive web applications using React",
+          requirements: "React, JavaScript, HTML/CSS, 2+ years experience",
+          url: "https://example.com/job3"
+        },
+        {
+          title: "Software Engineer",
+          company: "BigTech Inc",
+          location: "Seattle, WA",
+          type: "Full-time",
+          remote: true,
+          salary: "$130,000 - $160,000",
+          description: "Develop scalable software solutions",
+          requirements: "Computer Science degree, 4+ years experience",
+          url: "https://example.com/job4"
+        },
+        {
+          title: "UI/UX Developer",
+          company: "DesignStudio",
+          location: "Austin, TX",
+          type: "Full-time",
+          remote: false,
+          salary: "$80,000 - $100,000",
+          description: "Design and implement user interfaces",
+          requirements: "Figma, HTML/CSS, JavaScript, design experience",
+          url: "https://example.com/job5"
+        }
+      ];
+
+      for (const job of sampleJobs) {
+        await storage.createJobListing(job);
+      }
+
+      res.json({ message: "Sample data initialized successfully" });
+    } catch (error) {
+      console.error("Error initializing sample data:", error);
+      res.status(500).json({ message: "Failed to initialize sample data" });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }

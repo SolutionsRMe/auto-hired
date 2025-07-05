@@ -255,8 +255,13 @@ export default function Landing() {
                   Priority support
                 </li>
               </ul>
-              <Button className="w-full">
-                Coming Soon
+              <Button 
+                className="w-full"
+                onClick={() => {
+                  alert("AutoHired Premium is coming soon! \n\nPremium features will include:\n• AI-powered resume optimization\n• Automatic form submissions\n• OCR document parsing\n• Advanced analytics\n• Priority support\n\nStay tuned for updates!");
+                }}
+              >
+                Learn More
               </Button>
             </CardContent>
           </Card>

@@ -32,7 +32,14 @@ export default function TopHeader() {
           </h2>
         </div>
         <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="sm" className="relative">
+          <Button 
+            variant="ghost" 
+            size="sm" 
+            className="relative"
+            onClick={() => {
+              alert("Notifications\n\nYou would see notifications about:\n• New job matches\n• Application status updates\n• Interview reminders\n• Goal achievements\n• System updates\n\nNo new notifications at this time.");
+            }}
+          >
             <Bell className="w-5 h-5" />
             <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
           </Button>

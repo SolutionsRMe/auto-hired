@@ -14,8 +14,8 @@ import ApplicationTable from "@/components/applications/application-table";
 export default function Applications() {
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [statusFilter, setStatusFilter] = useState("");
-  const [dateFilter, setDateFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("all");
+  const [dateFilter, setDateFilter] = useState("all");
   
   const { toast } = useToast();
   const queryClient = useQueryClient();
@@ -28,7 +28,7 @@ export default function Applications() {
     queryKey: ["/api/applications", { 
       page, 
       limit: 10, 
-      status: statusFilter || undefined,
+      status: statusFilter && statusFilter !== "all" ? statusFilter : undefined,
       search: searchTerm || undefined 
     }],
   });
@@ -102,8 +102,8 @@ export default function Applications() {
 
   const clearFilters = () => {
     setSearchTerm("");
-    setStatusFilter("");
-    setDateFilter("");
+    setStatusFilter("all");
+    setDateFilter("all");
     setPage(1);
   };
 
@@ -119,11 +119,22 @@ export default function Applications() {
           <p className="text-gray-600">Monitor and manage your job applications</p>
         </div>
         <div className="flex space-x-3">
-          <Button variant="outline" className="flex items-center space-x-2">
+          <Button 
+            variant="outline" 
+            className="flex items-center space-x-2"
+            onClick={() => {
+              alert("Export Applications\n\nThis feature would allow you to export your application data as:\n• CSV file for Excel\n• PDF report\n• JSON data\n\nExport functionality coming soon!");
+            }}
+          >
             <Download className="w-4 h-4" />
             <span>Export</span>
           </Button>
-          <Button className="flex items-center space-x-2">
+          <Button 
+            className="flex items-center space-x-2"
+            onClick={() => {
+              alert("Add Application Feature\n\nThis would open a form to manually add a job application with details like:\n• Company name\n• Job title\n• Application date\n• Status\n• Notes\n\nThis feature is coming soon!");
+            }}
+          >
             <Plus className="w-4 h-4" />
             <span>Add Application</span>
           </Button>
@@ -148,7 +159,7 @@ export default function Applications() {
                 <SelectValue placeholder="All Statuses" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Statuses</SelectItem>
+                <SelectItem value="all">All Statuses</SelectItem>
                 <SelectItem value="applied">Applied</SelectItem>
                 <SelectItem value="interview">Interview</SelectItem>
                 <SelectItem value="offer">Offer</SelectItem>
@@ -160,7 +171,7 @@ export default function Applications() {
                 <SelectValue placeholder="All Time" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="">All Time</SelectItem>
+                <SelectItem value="all">All Time</SelectItem>
                 <SelectItem value="7">Last 7 days</SelectItem>
                 <SelectItem value="30">Last 30 days</SelectItem>
                 <SelectItem value="90">Last 3 months</SelectItem>

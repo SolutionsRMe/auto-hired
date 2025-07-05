@@ -50,7 +50,7 @@ export default function Profile() {
   const [formData, setFormData] = useState({
     jobTitle: preferences?.jobTitle || "",
     preferredLocation: preferences?.preferredLocation || "",
-    minSalary: preferences?.minSalary || "",
+    minSalary: preferences?.minSalary || 0,
     workType: preferences?.workType || "any",
     dailyGoal: preferences?.dailyGoal || 5,
     weeklyGoal: preferences?.weeklyGoal || 20,
@@ -99,7 +99,7 @@ export default function Profile() {
     const updatedFormData = {
       jobTitle: preferences.jobTitle || "",
       preferredLocation: preferences.preferredLocation || "",
-      minSalary: preferences.minSalary || "",
+      minSalary: preferences.minSalary || 0,
       workType: preferences.workType || "any",
       dailyGoal: preferences.dailyGoal || 5,
       weeklyGoal: preferences.weeklyGoal || 20,

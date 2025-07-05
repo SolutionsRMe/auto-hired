@@ -49,14 +49,14 @@ export default function TopHeader() {
           </Button>
           <div className="flex items-center space-x-3">
             <img
-              src={user?.profileImageUrl || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"}
+              src={user?.photoURL || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100"}
               alt="User profile"
               className="w-8 h-8 rounded-full object-cover"
             />
             {!isMobile && (
               <div>
                 <p className="text-sm font-medium text-gray-900">
-                  {user?.firstName && user?.lastName ? `${user.firstName} ${user.lastName}` : 'User'}
+                  {user?.displayName || 'User'}
                 </p>
                 <p className="text-xs text-gray-500">{user?.email}</p>
               </div>

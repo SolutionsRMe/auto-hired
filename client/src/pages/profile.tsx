@@ -10,12 +10,12 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Camera, User, Settings, Bell, Target, LogOut } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useAuth } from "@/hooks/useAuth";
+import { useFirebaseAuth } from "@/hooks/useFirebaseAuth";
 import { apiRequest } from "@/lib/queryClient";
 
 export default function Profile() {
   const [isEditing, setIsEditing] = useState(false);
-  const { user } = useAuth();
+  const { user, signOut } = useFirebaseAuth();
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
@@ -65,8 +65,9 @@ export default function Profile() {
     updatePreferencesMutation.mutate(formData);
   };
 
-  const handleLogout = () => {
-    window.location.href = '/api/logout';
+  const handleLogout = async () => {
+    await signOut();
+    window.location.href = '/';
   };
 
   if (preferencesLoading) {
@@ -123,7 +124,7 @@ export default function Profile() {
             <div className="flex items-center space-x-6">
               <div className="relative">
                 <img
-                  src={user?.profileImageUrl || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150"}
+                  src={user?.photoURL || "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&h=150"}
                   alt="Profile"
                   className="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
                 />
@@ -133,7 +134,7 @@ export default function Profile() {
               </div>
               <div className="flex-1">
                 <h2 className="text-2xl font-semibold text-gray-900">
-                  {user?.firstName && user?.lastName ? `${user.firstName} ${user.lastName}` : 'User'}
+                  {user?.displayName || 'User'}
                 </h2>
                 <p className="text-gray-600">{formData.jobTitle || 'Job Seeker'}</p>
                 <p className="text-sm text-gray-500">{user?.email}</p>
@@ -143,7 +144,7 @@ export default function Profile() {
                     Active Job Seeker
                   </Badge>
                   <span className="text-sm text-gray-500">
-                    Member since {new Date(user?.createdAt || Date.now()).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                    Member since {new Date(Date.now()).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                   </span>
                 </div>
               </div>

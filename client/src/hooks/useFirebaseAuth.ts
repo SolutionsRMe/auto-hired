@@ -4,42 +4,19 @@ import { onAuthStateChange, signInWithGoogle, signOutUser, isFirebaseConfigured 
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 
-interface FirebaseUser {
-  id: string;
-  email: string | null;
-  firstName: string | null;
-  lastName: string | null;
-  profileImageUrl: string | null;
-}
-
 export function useFirebaseAuth() {
-  const [user, setUser] = useState<FirebaseUser | null>(null);
+  const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChange(async (firebaseUser: User | null) => {
-      if (firebaseUser) {
-        // Convert Firebase user to our user format
-        const userData: FirebaseUser = {
-          id: firebaseUser.uid,
-          email: firebaseUser.email,
-          firstName: firebaseUser.displayName?.split(' ')[0] || null,
-          lastName: firebaseUser.displayName?.split(' ').slice(1).join(' ') || null,
-          profileImageUrl: firebaseUser.photoURL,
-        };
+    if (!isFirebaseConfigured) {
+      setIsLoading(false);
+      return;
+    }
 
-        // Sync user with backend
-        try {
-          await apiRequest("POST", "/api/auth/sync-user", userData);
-          setUser(userData);
-        } catch (error) {
-          console.error("Error syncing user with backend:", error);
-          setUser(userData); // Still set user even if backend sync fails
-        }
-      } else {
-        setUser(null);
-      }
+    const unsubscribe = onAuthStateChange((firebaseUser: User | null) => {
+      setUser(firebaseUser);
       setIsLoading(false);
     });
 

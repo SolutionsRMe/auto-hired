@@ -35,6 +35,7 @@ function Router() {
       <Switch>
         <Route path="/" component={Landing} />
         <Route path="/auth" component={GoogleAuth} />
+        <Route path="/google-auth" component={GoogleAuth} />
         <Route path="/premium-purchase" component={PremiumPurchase} />
         <Route path="/about" component={About} />
         <Route path="/privacy" component={Privacy} />

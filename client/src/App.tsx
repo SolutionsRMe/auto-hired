@@ -12,6 +12,7 @@ import JobSearch from "@/pages/job-search";
 import Applications from "@/pages/applications";
 import Profile from "@/pages/profile";
 import GoogleAuth from "@/pages/google-auth";
+import PremiumPurchase from "@/pages/premium-purchase";
 import MainLayout from "@/components/layout/main-layout";
 
 function Router() {
@@ -30,6 +31,7 @@ function Router() {
       <Switch>
         <Route path="/" component={Landing} />
         <Route path="/auth" component={GoogleAuth} />
+        <Route path="/premium-purchase" component={PremiumPurchase} />
         <Route component={Landing} />
       </Switch>
     );
@@ -43,6 +45,7 @@ function Router() {
         <Route path="/jobs" component={JobSearch} />
         <Route path="/applications" component={Applications} />
         <Route path="/profile" component={Profile} />
+        <Route path="/premium-purchase" component={PremiumPurchase} />
         <Route component={NotFound} />
       </Switch>
     </MainLayout>

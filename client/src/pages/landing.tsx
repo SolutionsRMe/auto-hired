@@ -49,10 +49,10 @@ export default function Landing() {
             variant="outline" 
             size="lg" 
             className="text-lg px-8 py-6"
-            onClick={() => window.open('https://github.com', '_blank')}
+            onClick={() => window.location.href = '/premium-purchase'}
           >
-            <Github className="w-5 h-5 mr-2" />
-            View on GitHub
+            <Zap className="w-5 h-5 mr-2" />
+            View Premium
           </Button>
         </div>
       </section>
@@ -257,11 +257,9 @@ export default function Landing() {
               </ul>
               <Button 
                 className="w-full"
-                onClick={() => {
-                  alert("AutoHired Premium - Advanced Job Search Automation\n\n🤖 AI-POWERED FEATURES:\n• Smart resume optimization for each job\n• ATS-friendly formatting suggestions\n• Cover letter generation from job descriptions\n• Keyword matching analysis\n\n⚡ AUTOMATION TOOLS:\n• Auto-fill job application forms\n• Bulk application submissions\n• Follow-up email scheduling\n• Interview calendar integration\n\n📊 ADVANCED ANALYTICS:\n• Application success rate tracking\n• Industry-specific insights\n• Salary negotiation data\n• Response time optimization\n\n🔧 PREMIUM TOOLS:\n• OCR resume import from PDFs/images\n• Chrome extension for one-click applications\n• Priority customer support\n• API integrations with major job boards\n\n💰 PRICING: $29/month\nStart with 14-day free trial\n\nContact us for enterprise pricing and custom integrations.");
-                }}
+                onClick={() => window.location.href = '/premium-purchase'}
               >
-                Learn More
+                Try Premium
               </Button>
             </CardContent>
           </Card>

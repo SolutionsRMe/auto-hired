@@ -132,11 +132,11 @@ export default function Applications() {
             variant="outline" 
             className="flex items-center space-x-2"
             onClick={() => {
-              alert("AutoHired Premium - Advanced Application Management\n\n🚀 Premium Features:\n• Automated application exports to multiple formats\n• Advanced analytics and success rate tracking\n• AI-powered application optimization suggestions\n• Bulk application management tools\n• Priority customer support\n• Custom branding options\n\n💼 Perfect for serious job seekers who want to maximize their application success rate.\n\nComing soon with full subscription management!");
+              window.open('/premium-purchase', '_blank');
             }}
           >
             <Download className="w-4 h-4" />
-            <span>View Premium</span>
+            <span>Try Premium</span>
           </Button>
         </div>
       </div>

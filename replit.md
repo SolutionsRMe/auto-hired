@@ -115,6 +115,12 @@ Changelog:
   * Removed non-functional features from lite version
   * Fixed notification icon positioning
   * Clarified premium features with informative dialogs
+- July 05, 2025. Streamlined premium upgrade experience:
+  * Removed all "View Premium" and "Learn More" informational buttons
+  * Replaced with direct "Try Premium" buttons linking to purchase page
+  * Created comprehensive premium purchase page with feature comparison
+  * Updated landing page to showcase all options before login
+  * Simplified user journey from lite features to premium upgrade
 ```
 
 ## User Preferences

@@ -123,8 +123,8 @@ export default function Landing() {
 
           <Card className="border-divider bg-surface text-text-light shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-primary/20">
-                <Mail className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-accent/20">
+                <Mail className="w-6 h-6 text-accent" />
               </div>
               <CardTitle className="text-text-light">Email Summaries</CardTitle>
               <CardDescription className="text-text-light/70">

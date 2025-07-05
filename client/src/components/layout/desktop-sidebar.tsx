@@ -53,7 +53,12 @@ export default function DesktopSidebar() {
           <p className="text-sm text-blue-100 mb-3">
             Get AI-powered features, auto-form filling, and advanced analytics
           </p>
-          <Button className="w-full bg-white text-blue-600 font-medium py-2 px-4 rounded-md text-sm hover:bg-blue-50">
+          <Button 
+            className="w-full bg-white text-blue-600 font-medium py-2 px-4 rounded-md text-sm hover:bg-blue-50"
+            onClick={() => {
+              alert("AutoHired Premium Features:\n\n• AI-powered resume optimization\n• Automatic form submissions\n• OCR document parsing\n• Advanced analytics dashboard\n• Priority customer support\n• Custom job alerts\n• Interview scheduling tools\n\nComing soon! Stay tuned for the full premium version.");
+            }}
+          >
             Learn More
           </Button>
         </div>

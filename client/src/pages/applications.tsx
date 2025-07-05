@@ -120,16 +120,6 @@ export default function Applications() {
         </div>
         <div className="flex space-x-3">
           <Button 
-            variant="outline" 
-            className="flex items-center space-x-2"
-            onClick={() => {
-              alert("Export Applications\n\nThis feature would allow you to export your application data as:\n• CSV file for Excel\n• PDF report\n• JSON data\n\nExport functionality coming soon!");
-            }}
-          >
-            <Download className="w-4 h-4" />
-            <span>Export</span>
-          </Button>
-          <Button 
             className="flex items-center space-x-2"
             onClick={() => {
               alert("Add Application Feature\n\nThis would open a form to manually add a job application with details like:\n• Company name\n• Job title\n• Application date\n• Status\n• Notes\n\nThis feature is coming soon!");
@@ -137,6 +127,16 @@ export default function Applications() {
           >
             <Plus className="w-4 h-4" />
             <span>Add Application</span>
+          </Button>
+          <Button 
+            variant="outline" 
+            className="flex items-center space-x-2"
+            onClick={() => {
+              window.open('https://github.com', '_blank');
+            }}
+          >
+            <Download className="w-4 h-4" />
+            <span>View Premium</span>
           </Button>
         </div>
       </div>

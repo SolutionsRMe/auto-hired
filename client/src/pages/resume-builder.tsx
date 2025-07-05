@@ -98,11 +98,11 @@ export default function ResumeBuilder() {
                   variant="outline" 
                   className="flex items-center space-x-2"
                   onClick={() => {
-                    alert("Import Resume Feature\n\nThis feature would allow you to:\n• Upload PDF or Word documents\n• Extract text using OCR technology\n• Auto-populate form fields\n• Parse work experience and skills\n\nPremium feature - coming soon!");
+                    window.open('https://github.com', '_blank');
                   }}
                 >
-                  <Upload className="w-4 h-4" />
-                  <span>Import Resume</span>
+                  <FileText className="w-4 h-4" />
+                  <span>View Premium</span>
                 </Button>
                 <Button 
                   className="flex items-center space-x-2"

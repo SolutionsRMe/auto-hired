@@ -107,6 +107,14 @@ The application follows a monorepo structure with clear separation between clien
 ```
 Changelog:
 - July 05, 2025. Initial setup
+- July 05, 2025. Fixed all major functionality issues:
+  * Fixed SelectItem crash errors in forms
+  * Added sample job data for testing
+  * Made all buttons functional with appropriate actions
+  * Restructured features for lite vs premium distinction
+  * Removed non-functional features from lite version
+  * Fixed notification icon positioning
+  * Clarified premium features with informative dialogs
 ```
 
 ## User Preferences

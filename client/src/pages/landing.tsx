@@ -21,7 +21,7 @@ export default function Landing() {
           </div>
           <Button 
             className="bg-secondary text-primary hover:bg-secondary/90 border-secondary"
-            onClick={() => window.location.href = '/api/login'}
+            onClick={() => window.location.href = '/google-auth'}
           >
             Sign In
           </Button>
@@ -45,7 +45,7 @@ export default function Landing() {
           <Button 
             size="lg" 
             className="text-lg px-8 py-6 bg-secondary text-primary hover:bg-secondary/90 transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
-            onClick={() => window.location.href = '/api/login'}
+            onClick={() => window.location.href = '/google-auth'}
           >
             Get Started Free
           </Button>

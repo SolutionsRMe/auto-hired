@@ -19,8 +19,8 @@ export default function DesktopSidebar() {
       {/* Logo */}
       <div className="p-6 border-b border-gray-200">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ backgroundColor: '#1E2A38' }}>
-            <Briefcase className="w-6 h-6" style={{ color: '#F8F9FA' }} />
+          <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-primary">
+            <Briefcase className="w-6 h-6 text-white" />
           </div>
           <div>
             <h1 className="text-xl font-semibold text-gray-900">AutoHired</h1>

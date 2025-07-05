@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force color styles for AutoHired */
+.text-primary { color: #1E2A38 !important; }
+.text-secondary { color: #00C2A8 !important; }
+.text-accent { color: #FF6B6B !important; }
+.bg-primary { background-color: #1E2A38 !important; }
+.bg-secondary { background-color: #00C2A8 !important; }
+.bg-accent { background-color: #FF6B6B !important; }
+
 :root {
   /* AutoHired Custom Color Palette */
   --background: 248 249 250; /* Ghost White #F8F9FA */

@@ -164,6 +164,9 @@ Changelog:
   * Fixed user property references to use Firebase User object structure
   * Implemented proper logout functionality with Firebase authentication
   * Verified authentication flow works correctly with Google Sign-In popup
+  * Fixed routing issues - authentication page accessible at both /auth and /google-auth
+  * Resolved environment variable detection issues with Vite client build
+  * All sign-in buttons now working correctly with Firebase authentication system
 ```
 
 ## User Preferences

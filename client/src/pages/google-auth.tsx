@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Briefcase, Shield, Zap, Users } from "lucide-react";
+import { Briefcase, Shield, Zap, Users, AlertCircle } from "lucide-react";
 import { useFirebaseAuth } from "@/hooks/useFirebaseAuth";
 import { useLocation } from "wouter";
+import { isFirebaseConfigured } from "@/lib/firebase";
 
 export default function GoogleAuth() {
   const { user, isLoading, signIn } = useFirebaseAuth();
@@ -17,6 +18,10 @@ export default function GoogleAuth() {
   }, [user, isLoading, setLocation]);
 
   const handleSignIn = async () => {
+    if (!isFirebaseConfigured) {
+      alert("Google authentication is not yet configured.\n\nFor now, you can use the current Replit authentication by going back to the homepage.\n\nOnce Firebase credentials are provided, Google sign-in will be available.");
+      return;
+    }
     await signIn();
   };
 
@@ -53,10 +58,25 @@ export default function GoogleAuth() {
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
+              {!isFirebaseConfigured && (
+                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+                  <div className="flex items-start">
+                    <AlertCircle className="w-5 h-5 text-yellow-600 mr-3 mt-0.5" />
+                    <div>
+                      <h4 className="text-sm font-medium text-yellow-800">Google Authentication Not Available</h4>
+                      <p className="text-sm text-yellow-700 mt-1">
+                        Firebase credentials are not configured yet. Use the current authentication system for now.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+              
               <Button
                 onClick={handleSignIn}
                 className="w-full bg-white hover:bg-gray-50 text-gray-900 border border-gray-300 shadow-sm"
                 size="lg"
+                disabled={!isFirebaseConfigured}
               >
                 <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -66,6 +86,17 @@ export default function GoogleAuth() {
                 </svg>
                 Continue with Google
               </Button>
+
+              {!isFirebaseConfigured && (
+                <Button
+                  onClick={() => window.location.href = '/api/login'}
+                  className="w-full"
+                  variant="outline"
+                  size="lg"
+                >
+                  Use Current Authentication
+                </Button>
+              )}
 
               <div className="text-center text-sm text-gray-500">
                 <p>By signing in, you agree to our Terms of Service and Privacy Policy</p>

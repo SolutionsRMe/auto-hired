@@ -1,25 +1,46 @@
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged, User } from "firebase/auth";
 
-const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.firebaseapp.com`,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.firebasestorage.app`,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
-};
+// Check if Firebase credentials are available
+const hasFirebaseCredentials = 
+  import.meta.env.VITE_FIREBASE_API_KEY && 
+  import.meta.env.VITE_FIREBASE_PROJECT_ID && 
+  import.meta.env.VITE_FIREBASE_APP_ID;
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
+let app: any = null;
+let auth: any = null;
 
-// Google Auth Provider
-const googleProvider = new GoogleAuthProvider();
-googleProvider.addScope('email');
-googleProvider.addScope('profile');
+if (hasFirebaseCredentials) {
+  const firebaseConfig = {
+    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+    authDomain: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.firebaseapp.com`,
+    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+    storageBucket: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}.firebasestorage.app`,
+    appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  };
+
+  // Initialize Firebase
+  app = initializeApp(firebaseConfig);
+  auth = getAuth(app);
+}
+
+export { auth };
+
+// Google Auth Provider (only if Firebase is configured)
+let googleProvider: GoogleAuthProvider | null = null;
+
+if (hasFirebaseCredentials && auth) {
+  googleProvider = new GoogleAuthProvider();
+  googleProvider.addScope('email');
+  googleProvider.addScope('profile');
+}
 
 // Auth functions
 export const signInWithGoogle = async () => {
+  if (!hasFirebaseCredentials || !auth || !googleProvider) {
+    throw new Error("Firebase not configured. Please provide Firebase credentials.");
+  }
+  
   try {
     const result = await signInWithPopup(auth, googleProvider);
     return result.user;
@@ -30,6 +51,10 @@ export const signInWithGoogle = async () => {
 };
 
 export const signOutUser = async () => {
+  if (!hasFirebaseCredentials || !auth) {
+    throw new Error("Firebase not configured. Please provide Firebase credentials.");
+  }
+  
   try {
     await signOut(auth);
   } catch (error) {
@@ -40,7 +65,16 @@ export const signOutUser = async () => {
 
 // Auth state listener
 export const onAuthStateChange = (callback: (user: User | null) => void) => {
+  if (!hasFirebaseCredentials || !auth) {
+    // If Firebase isn't configured, call callback with null user
+    callback(null);
+    return () => {}; // Return empty unsubscribe function
+  }
+  
   return onAuthStateChanged(auth, callback);
 };
+
+// Export Firebase availability status
+export const isFirebaseConfigured = hasFirebaseCredentials;
 
 export default app;

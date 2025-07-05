@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { User } from "firebase/auth";
-import { onAuthStateChange, signInWithGoogle, signOutUser } from "@/lib/firebase";
+import { onAuthStateChange, signInWithGoogle, signOutUser, isFirebaseConfigured } from "@/lib/firebase";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 

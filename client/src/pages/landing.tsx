@@ -18,7 +18,10 @@ export default function Landing() {
               <p className="text-sm text-text-light/70">Lite Version</p>
             </div>
           </div>
-          <Button onClick={() => window.location.href = '/api/login'}>
+          <Button 
+            className="bg-secondary text-primary hover:bg-secondary/90 border-secondary"
+            onClick={() => window.location.href = '/api/login'}
+          >
             Sign In
           </Button>
         </nav>
@@ -40,7 +43,7 @@ export default function Landing() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button 
             size="lg" 
-            className="text-lg px-8 py-6 bg-secondary text-primary hover:bg-secondary/90"
+            className="text-lg px-8 py-6 bg-secondary text-primary hover:bg-secondary/90 transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
             onClick={() => window.location.href = '/api/login'}
           >
             Get Started Free
@@ -48,10 +51,10 @@ export default function Landing() {
           <Button 
             variant="outline" 
             size="lg" 
-            className="text-lg px-8 py-6 border-2 text-accent border-accent hover:bg-accent hover:text-primary"
+            className="text-lg px-8 py-6 border-2 text-accent border-accent hover:bg-accent/10 hover:border-accent hover:text-accent transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
             onClick={() => window.location.href = '/premium-purchase'}
           >
-            <Zap className="w-5 h-5 mr-2 text-accent" />
+            <Zap className="w-5 h-5 mr-2" />
             View Premium
           </Button>
         </div>
@@ -197,9 +200,8 @@ export default function Landing() {
                 </li>
               </ul>
               <Button 
-                className="w-full" 
-                variant="outline"
-                onClick={() => window.location.href = '/auth'}
+                className="w-full bg-secondary text-primary hover:bg-secondary/90 transition-all duration-200 transform hover:scale-105" 
+                onClick={() => window.location.href = '/api/login'}
               >
                 Get Started
               </Button>
@@ -256,7 +258,7 @@ export default function Landing() {
                 </li>
               </ul>
               <Button 
-                className="w-full"
+                className="w-full bg-accent text-primary hover:bg-accent/90 transition-all duration-200 transform hover:scale-105"
                 onClick={() => window.location.href = '/premium-purchase'}
               >
                 Try Premium
@@ -277,8 +279,8 @@ export default function Landing() {
           </p>
           <Button 
             size="lg" 
-            className="text-lg px-8 py-6 bg-secondary text-primary hover:bg-secondary/90"
-            onClick={() => window.location.href = '/auth'}
+            className="text-lg px-8 py-6 bg-secondary text-primary hover:bg-secondary/90 transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+            onClick={() => window.location.href = '/api/login'}
           >
             Start Your Free Account
           </Button>
@@ -306,7 +308,7 @@ export default function Landing() {
             </div>
           </div>
           <div className="border-t border-divider mt-8 pt-8 text-center text-sm text-text-light/70">
-            © 2024 AutoHired. Open source job application automation platform.
+            © 2025 AutoHired. Open source job application automation platform.
           </div>
         </div>
       </footer>

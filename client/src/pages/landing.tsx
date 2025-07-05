@@ -5,17 +5,17 @@ import { Briefcase, Search, FileText, BarChart3, Mail, Target, Zap, Github } fro
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted to-secondary/5">
+    <div className="min-h-screen bg-primary text-text-light">
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <nav className="flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <Briefcase className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center">
+              <Briefcase className="w-6 h-6 text-primary" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-foreground">AutoHired</h1>
-              <p className="text-sm text-muted-foreground">Lite Version</p>
+              <h1 className="text-xl font-bold text-text-light">AutoHired</h1>
+              <p className="text-sm text-text-light/70">Lite Version</p>
             </div>
           </div>
           <Button onClick={() => window.location.href = '/api/login'}>
@@ -29,18 +29,18 @@ export default function Landing() {
         <Badge variant="outline" className="mb-4">
           Open Source • GitHub Available
         </Badge>
-        <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
+        <h1 className="text-5xl md:text-6xl font-bold text-text-light mb-6">
           Automate Your Job
           <span className="block text-secondary">Application Process</span>
         </h1>
-        <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+        <p className="text-xl text-text-light/80 mb-8 max-w-3xl mx-auto">
           Build your master resume, search jobs, generate tailored applications, and track your progress. 
           All in one intelligent platform designed for modern job seekers.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Button 
             size="lg" 
-            className="text-lg px-8 py-6 bg-primary text-white"
+            className="text-lg px-8 py-6 bg-secondary text-primary hover:bg-secondary/90"
             onClick={() => window.location.href = '/api/login'}
           >
             Get Started Free
@@ -48,10 +48,10 @@ export default function Landing() {
           <Button 
             variant="outline" 
             size="lg" 
-            className="text-lg px-8 py-6 border-2 text-secondary border-secondary"
+            className="text-lg px-8 py-6 border-2 text-accent border-accent hover:bg-accent hover:text-primary"
             onClick={() => window.location.href = '/premium-purchase'}
           >
-            <Zap className="w-5 h-5 mr-2 text-secondary" />
+            <Zap className="w-5 h-5 mr-2 text-accent" />
             View Premium
           </Button>
         </div>
@@ -60,82 +60,82 @@ export default function Landing() {
       {/* Features Grid */}
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-light mb-4">
             Everything You Need to Land Your Dream Job
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-xl text-text-light/80">
             Streamline your job search with powerful automation tools
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <Card className="border-0 shadow-lg">
+          <Card className="border-divider bg-surface text-text-light shadow-lg">
             <CardHeader>
               <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-secondary">
-                <FileText className="w-6 h-6 text-white" />
+                <FileText className="w-6 h-6 text-primary" />
               </div>
-              <CardTitle>Master Resume Builder</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-text-light">Master Resume Builder</CardTitle>
+              <CardDescription className="text-text-light/70">
                 Create a comprehensive resume profile by importing existing documents and organizing your experience
               </CardDescription>
             </CardHeader>
           </Card>
 
-          <Card className="border-0 shadow-lg">
+          <Card className="border-divider bg-surface text-text-light shadow-lg">
             <CardHeader>
               <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-accent">
-                <Search className="w-6 h-6 text-white" />
+                <Search className="w-6 h-6 text-primary" />
               </div>
-              <CardTitle>Smart Job Search</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-text-light">Smart Job Search</CardTitle>
+              <CardDescription className="text-text-light/70">
                 Browse curated job listings with intelligent matching based on your skills and preferences
               </CardDescription>
             </CardHeader>
           </Card>
 
-          <Card className="border-0 shadow-lg">
+          <Card className="border-divider bg-surface text-text-light shadow-lg">
             <CardHeader>
               <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-primary">
-                <Zap className="w-6 h-6 text-white" />
+                <Zap className="w-6 h-6 text-secondary" />
               </div>
-              <CardTitle>Tailored Applications</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-text-light">Tailored Applications</CardTitle>
+              <CardDescription className="text-text-light/70">
                 Generate customized resumes and cover letters for each job application automatically
               </CardDescription>
             </CardHeader>
           </Card>
 
-          <Card className="border-0 shadow-lg">
+          <Card className="border-divider bg-surface text-text-light shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(241, 196, 15, 0.1)' }}>
-                <BarChart3 className="w-6 h-6" style={{ color: '#F1C40F' }} />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-warning/20">
+                <BarChart3 className="w-6 h-6 text-warning" />
               </div>
-              <CardTitle>Application Tracking</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-text-light">Application Tracking</CardTitle>
+              <CardDescription className="text-text-light/70">
                 Monitor all your applications with detailed status tracking and progress analytics
               </CardDescription>
             </CardHeader>
           </Card>
 
-          <Card className="border-0 shadow-lg">
+          <Card className="border-divider bg-surface text-text-light shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(30, 42, 56, 0.1)' }}>
-                <Mail className="w-6 h-6" style={{ color: '#1E2A38' }} />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-primary/20">
+                <Mail className="w-6 h-6 text-primary" />
               </div>
-              <CardTitle>Email Summaries</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-text-light">Email Summaries</CardTitle>
+              <CardDescription className="text-text-light/70">
                 Receive automated email reports with your application progress and new opportunities
               </CardDescription>
             </CardHeader>
           </Card>
 
-          <Card className="border-0 shadow-lg">
+          <Card className="border-divider bg-surface text-text-light shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(0, 194, 168, 0.1)' }}>
-                <Target className="w-6 h-6" style={{ color: '#00C2A8' }} />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4 bg-secondary/20">
+                <Target className="w-6 h-6 text-secondary" />
               </div>
-              <CardTitle>Goal Tracking</CardTitle>
-              <CardDescription>
+              <CardTitle className="text-text-light">Goal Tracking</CardTitle>
+              <CardDescription className="text-text-light/70">
                 Set daily, weekly, and monthly application goals to stay motivated and organized
               </CardDescription>
             </CardHeader>
@@ -146,52 +146,52 @@ export default function Landing() {
       {/* Pricing Section */}
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-text-light mb-4">
             Choose Your Plan
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-text-light/80">
             Start free with our Lite version or upgrade for advanced features
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Lite Version */}
-          <Card className="border-2 border-gray-200">
+          <Card className="border-2 border-divider bg-surface text-text-light">
             <CardHeader className="text-center">
               <Badge variant="outline" className="w-fit mx-auto mb-2">Open Source</Badge>
-              <CardTitle className="text-2xl">AutoHired Lite</CardTitle>
-              <div className="text-4xl font-bold text-foreground">Free</div>
-              <CardDescription>Perfect for getting started</CardDescription>
+              <CardTitle className="text-2xl text-text-light">AutoHired Lite</CardTitle>
+              <div className="text-4xl font-bold text-secondary">Free</div>
+              <CardDescription className="text-text-light/70">Perfect for getting started</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="space-y-3">
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-success/10 rounded-full flex items-center justify-center mr-3">
+                <li className="flex items-center text-text-light">
+                  <div className="w-5 h-5 bg-success/20 rounded-full flex items-center justify-center mr-3">
                     <div className="w-2 h-2 bg-success rounded-full"></div>
                   </div>
                   Basic resume builder
                 </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                <li className="flex items-center text-text-light">
+                  <div className="w-5 h-5 bg-success/20 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-2 h-2 bg-success rounded-full"></div>
                   </div>
                   Job search & filtering
                 </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                <li className="flex items-center text-text-light">
+                  <div className="w-5 h-5 bg-success/20 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-2 h-2 bg-success rounded-full"></div>
                   </div>
                   Application tracking
                 </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                <li className="flex items-center text-text-light">
+                  <div className="w-5 h-5 bg-success/20 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-2 h-2 bg-success rounded-full"></div>
                   </div>
                   Email summaries
                 </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                <li className="flex items-center text-text-light">
+                  <div className="w-5 h-5 bg-success/20 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-2 h-2 bg-success rounded-full"></div>
                   </div>
                   GitHub source code
                 </li>
@@ -207,50 +207,50 @@ export default function Landing() {
           </Card>
 
           {/* Premium Version */}
-          <Card className="border-2 border-primary relative">
+          <Card className="border-2 border-accent bg-surface text-text-light relative">
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-              <Badge className="bg-primary">Most Popular</Badge>
+              <Badge className="bg-accent text-primary">Most Popular</Badge>
             </div>
             <CardHeader className="text-center">
-              <CardTitle className="text-2xl">AutoHired Premium</CardTitle>
-              <div className="text-4xl font-bold text-primary">$29/mo</div>
-              <CardDescription>Advanced automation features</CardDescription>
+              <CardTitle className="text-2xl text-text-light">AutoHired Premium</CardTitle>
+              <div className="text-4xl font-bold text-accent">$29/mo</div>
+              <CardDescription className="text-text-light/70">Advanced automation features</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="space-y-3">
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                <li className="flex items-center text-text-light">
+                  <div className="w-5 h-5 bg-success/20 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-2 h-2 bg-success rounded-full"></div>
                   </div>
                   Everything in Lite
                 </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <li className="flex items-center text-text-light">
+                  <div className="w-5 h-5 bg-accent/20 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
                   </div>
                   AI-powered resume optimization
                 </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <li className="flex items-center text-text-light">
+                  <div className="w-5 h-5 bg-accent/20 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
                   </div>
                   Automatic form submissions
                 </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <li className="flex items-center text-text-light">
+                  <div className="w-5 h-5 bg-accent/20 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
                   </div>
                   OCR document parsing
                 </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <li className="flex items-center text-text-light">
+                  <div className="w-5 h-5 bg-accent/20 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
                   </div>
                   Advanced analytics
                 </li>
-                <li className="flex items-center">
-                  <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                <li className="flex items-center text-text-light">
+                  <div className="w-5 h-5 bg-accent/20 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-2 h-2 bg-accent rounded-full"></div>
                   </div>
                   Priority support
                 </li>
@@ -267,18 +267,17 @@ export default function Landing() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-primary text-white py-20">
+      <section className="bg-surface text-text-light py-20 border-t border-divider">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-text-light">
             Ready to Transform Your Job Search?
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-text-light/80 mb-8 max-w-2xl mx-auto">
             Join thousands of job seekers who have automated their application process and landed their dream jobs faster.
           </p>
           <Button 
             size="lg" 
-            variant="secondary" 
-            className="text-lg px-8 py-6"
+            className="text-lg px-8 py-6 bg-secondary text-primary hover:bg-secondary/90"
             onClick={() => window.location.href = '/auth'}
           >
             Start Your Free Account
@@ -287,26 +286,26 @@ export default function Landing() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-primary text-text-light py-12 border-t border-divider">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <Briefcase className="w-5 h-5 text-white" />
+              <div className="w-8 h-8 bg-secondary rounded-lg flex items-center justify-center">
+                <Briefcase className="w-5 h-5 text-primary" />
               </div>
               <div>
-                <h3 className="font-bold">AutoHired</h3>
-                <p className="text-sm text-gray-400">Job Application Automation</p>
+                <h3 className="font-bold text-text-light">AutoHired</h3>
+                <p className="text-sm text-text-light/70">Job Application Automation</p>
               </div>
             </div>
-            <div className="flex items-center space-x-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-white transition-colors">About</a>
-              <a href="#" className="hover:text-white transition-colors">Privacy</a>
-              <a href="#" className="hover:text-white transition-colors">Terms</a>
-              <a href="#" className="hover:text-white transition-colors">Support</a>
+            <div className="flex items-center space-x-6 text-sm text-text-light/70">
+              <a href="#" className="hover:text-text-light transition-colors">About</a>
+              <a href="#" className="hover:text-text-light transition-colors">Privacy</a>
+              <a href="#" className="hover:text-text-light transition-colors">Terms</a>
+              <a href="#" className="hover:text-text-light transition-colors">Support</a>
             </div>
           </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+          <div className="border-t border-divider mt-8 pt-8 text-center text-sm text-text-light/70">
             © 2024 AutoHired. Open source job application automation platform.
           </div>
         </div>

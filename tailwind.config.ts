@@ -21,22 +21,13 @@ export default {
           DEFAULT: "var(--popover)",
           foreground: "var(--popover-foreground)",
         },
-        primary: {
-          DEFAULT: "#1E2A38",
-          foreground: "#F8F9FA",
-        },
-        secondary: {
-          DEFAULT: "#00C2A8",
-          foreground: "#F8F9FA",
-        },
+        primary: "#1E1B4B",
+        secondary: "#00C2A8",
         muted: {
           DEFAULT: "var(--muted)",
           foreground: "var(--muted-foreground)",
         },
-        accent: {
-          DEFAULT: "#FF6B6B",
-          foreground: "#F8F9FA",
-        },
+        accent: "#FF6B6B",
         destructive: {
           DEFAULT: "var(--destructive)",
           foreground: "var(--destructive-foreground)",
@@ -47,11 +38,12 @@ export default {
         warning: {
           DEFAULT: "#F1C40F",
         },
-        bgLight: "#F8F9FA",
-        bgDark: "#121212",
-        surface: "#E9ECEF",
-        textPrimary: "#212529",
-        textSecondary: "#6C757D",
+        text: {
+          light: "#F8F9FA",
+          dark: "#121212",
+        },
+        surface: "#2C2A58",
+        divider: "#494D7E",
         error: "#E74C3C",
         border: "var(--border)",
         input: "var(--input)",

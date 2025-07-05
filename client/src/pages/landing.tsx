@@ -258,7 +258,7 @@ export default function Landing() {
               <Button 
                 className="w-full"
                 onClick={() => {
-                  alert("AutoHired Premium is coming soon! \n\nPremium features will include:\n• AI-powered resume optimization\n• Automatic form submissions\n• OCR document parsing\n• Advanced analytics\n• Priority support\n\nStay tuned for updates!");
+                  alert("AutoHired Premium - Advanced Job Search Automation\n\n🤖 AI-POWERED FEATURES:\n• Smart resume optimization for each job\n• ATS-friendly formatting suggestions\n• Cover letter generation from job descriptions\n• Keyword matching analysis\n\n⚡ AUTOMATION TOOLS:\n• Auto-fill job application forms\n• Bulk application submissions\n• Follow-up email scheduling\n• Interview calendar integration\n\n📊 ADVANCED ANALYTICS:\n• Application success rate tracking\n• Industry-specific insights\n• Salary negotiation data\n• Response time optimization\n\n🔧 PREMIUM TOOLS:\n• OCR resume import from PDFs/images\n• Chrome extension for one-click applications\n• Priority customer support\n• API integrations with major job boards\n\n💰 PRICING: $29/month\nStart with 14-day free trial\n\nContact us for enterprise pricing and custom integrations.");
                 }}
               >
                 Learn More

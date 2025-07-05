@@ -2,12 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, signOut, GoogleAuthProvider, onAuthStateChanged, User } from "firebase/auth";
 
 // Check if Firebase credentials are available
-console.log('Firebase env check:', {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY ? 'SET' : 'NOT SET',
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID ? 'SET' : 'NOT SET',
-  appId: import.meta.env.VITE_FIREBASE_APP_ID ? 'SET' : 'NOT SET'
-});
-
 const hasFirebaseCredentials = 
   import.meta.env.VITE_FIREBASE_API_KEY && 
   import.meta.env.VITE_FIREBASE_PROJECT_ID && 

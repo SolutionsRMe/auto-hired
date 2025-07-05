@@ -3,48 +3,54 @@
 @tailwind utilities;
 
 :root {
-  --background: hsl(0, 0%, 100%);
-  --foreground: hsl(20, 14.3%, 4.1%);
-  --muted: hsl(60, 4.8%, 95.9%);
-  --muted-foreground: hsl(25, 5.3%, 44.7%);
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(20, 14.3%, 4.1%);
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(20, 14.3%, 4.1%);
-  --border: hsl(20, 5.9%, 90%);
-  --input: hsl(20, 5.9%, 90%);
-  --primary: hsl(213, 82%, 60%);
-  --primary-foreground: hsl(211, 100%, 99%);
-  --secondary: hsl(60, 4.8%, 95.9%);
-  --secondary-foreground: hsl(24, 9.8%, 10%);
-  --accent: hsl(60, 4.8%, 95.9%);
-  --accent-foreground: hsl(24, 9.8%, 10%);
-  --destructive: hsl(0, 84.2%, 60.2%);
-  --destructive-foreground: hsl(60, 9.1%, 97.8%);
-  --ring: hsl(20, 14.3%, 4.1%);
+  /* AutoHired Custom Color Palette */
+  --background: 248 249 250; /* Ghost White #F8F9FA */
+  --foreground: 33 37 41; /* Charcoal Black #212529 */
+  --muted: 233 236 239; /* Pale Ash Grey #E9ECEF */
+  --muted-foreground: 108 117 125; /* Slate Grey #6C757D */
+  --popover: 248 249 250; /* Ghost White #F8F9FA */
+  --popover-foreground: 33 37 41; /* Charcoal Black #212529 */
+  --card: 248 249 250; /* Ghost White #F8F9FA */
+  --card-foreground: 33 37 41; /* Charcoal Black #212529 */
+  --border: 233 236 239; /* Pale Ash Grey #E9ECEF */
+  --input: 233 236 239; /* Pale Ash Grey #E9ECEF */
+  --primary: 30 42 56; /* Midnight Blue #1E2A38 */
+  --primary-foreground: 248 249 250; /* Ghost White #F8F9FA */
+  --secondary: 0 194 168; /* Electric Teal #00C2A8 */
+  --secondary-foreground: 248 249 250; /* Ghost White #F8F9FA */
+  --accent: 255 107 107; /* Vibrant Coral #FF6B6B */
+  --accent-foreground: 248 249 250; /* Ghost White #F8F9FA */
+  --destructive: 231 76 60; /* Crimson #E74C3C */
+  --destructive-foreground: 248 249 250; /* Ghost White #F8F9FA */
+  --success: 46 204 113; /* Emerald Green #2ECC71 */
+  --warning: 241 196 15; /* Goldenrod #F1C40F */
+  --ring: 30 42 56; /* Midnight Blue #1E2A38 */
   --radius: 0.5rem;
 }
 
 .dark {
-  --background: hsl(240, 10%, 3.9%);
-  --foreground: hsl(0, 0%, 98%);
-  --muted: hsl(240, 3.7%, 15.9%);
-  --muted-foreground: hsl(240, 5%, 64.9%);
-  --popover: hsl(240, 10%, 3.9%);
-  --popover-foreground: hsl(0, 0%, 98%);
-  --card: hsl(240, 10%, 3.9%);
-  --card-foreground: hsl(0, 0%, 98%);
-  --border: hsl(240, 3.7%, 15.9%);
-  --input: hsl(240, 3.7%, 15.9%);
-  --primary: hsl(213, 82%, 60%);
-  --primary-foreground: hsl(211, 100%, 99%);
-  --secondary: hsl(240, 3.7%, 15.9%);
-  --secondary-foreground: hsl(0, 0%, 98%);
-  --accent: hsl(240, 3.7%, 15.9%);
-  --accent-foreground: hsl(0, 0%, 98%);
-  --destructive: hsl(0, 62.8%, 30.6%);
-  --destructive-foreground: hsl(0, 0%, 98%);
-  --ring: hsl(240, 4.9%, 83.9%);
+  /* AutoHired Dark Mode */
+  --background: 18 18 18; /* Charcoal #121212 */
+  --foreground: 248 249 250; /* Ghost White #F8F9FA */
+  --muted: 30 42 56; /* Midnight Blue #1E2A38 */
+  --muted-foreground: 108 117 125; /* Slate Grey #6C757D */
+  --popover: 18 18 18; /* Charcoal #121212 */
+  --popover-foreground: 248 249 250; /* Ghost White #F8F9FA */
+  --card: 30 42 56; /* Midnight Blue #1E2A38 */
+  --card-foreground: 248 249 250; /* Ghost White #F8F9FA */
+  --border: 30 42 56; /* Midnight Blue #1E2A38 */
+  --input: 30 42 56; /* Midnight Blue #1E2A38 */
+  --primary: 0 194 168; /* Electric Teal #00C2A8 */
+  --primary-foreground: 18 18 18; /* Charcoal #121212 */
+  --secondary: 30 42 56; /* Midnight Blue #1E2A38 */
+  --secondary-foreground: 248 249 250; /* Ghost White #F8F9FA */
+  --accent: 255 107 107; /* Vibrant Coral #FF6B6B */
+  --accent-foreground: 248 249 250; /* Ghost White #F8F9FA */
+  --destructive: 231 76 60; /* Crimson #E74C3C */
+  --destructive-foreground: 248 249 250; /* Ghost White #F8F9FA */
+  --success: 46 204 113; /* Emerald Green #2ECC71 */
+  --warning: 241 196 15; /* Goldenrod #F1C40F */
+  --ring: 0 194 168; /* Electric Teal #00C2A8 */
   --radius: 0.5rem;
 }
 
@@ -61,43 +67,50 @@
 
 @layer components {
   .mobile-nav-item {
-    @apply flex flex-col items-center justify-center text-gray-500 transition-colors;
+    @apply flex flex-col items-center justify-center text-muted-foreground transition-colors;
   }
   
   .mobile-nav-item.active {
-    @apply text-primary bg-blue-50;
+    @apply text-secondary;
+    background-color: rgb(0 194 168 / 0.1);
   }
   
   .sidebar-nav-item {
-    @apply w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-600 hover:bg-gray-50 font-medium transition-colors;
+    @apply w-full flex items-center space-x-3 px-4 py-3 rounded-lg text-muted-foreground hover:bg-muted font-medium transition-colors;
   }
   
   .sidebar-nav-item.active {
-    @apply bg-blue-50 text-primary;
+    @apply text-secondary;
+    background-color: rgb(0 194 168 / 0.1);
   }
   
   .stat-card {
-    @apply bg-white rounded-lg border border-gray-200 p-4;
+    @apply bg-card rounded-lg border border-border p-4;
   }
   
   .job-card {
-    @apply bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow cursor-pointer;
+    @apply bg-card rounded-lg border border-border p-6 hover:shadow-md transition-shadow cursor-pointer;
   }
   
   .application-status-applied {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800;
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium text-secondary;
+    background-color: rgb(0 194 168 / 0.1);
   }
   
   .application-status-interview {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800;
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    background-color: rgb(46 204 113 / 0.1);
+    color: rgb(46 204 113);
   }
   
   .application-status-offer {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800;
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium text-accent;
+    background-color: rgb(255 107 107 / 0.1);
   }
   
   .application-status-rejected {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800;
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium text-destructive;
+    background-color: rgb(231 76 60 / 0.1);
   }
   
   .skill-tag {
@@ -105,14 +118,17 @@
   }
   
   .skill-tag-technical {
-    @apply bg-blue-100 text-blue-800;
+    @apply text-secondary;
+    background-color: rgb(0 194 168 / 0.1);
   }
   
   .skill-tag-soft {
-    @apply bg-green-100 text-green-800;
+    background-color: rgb(46 204 113 / 0.1);
+    color: rgb(46 204 113);
   }
   
   .skill-tag-certification {
-    @apply bg-purple-100 text-purple-800;
+    @apply text-accent;
+    background-color: rgb(255 107 107 / 0.1);
   }
 }

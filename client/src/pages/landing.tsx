@@ -5,7 +5,7 @@ import { Briefcase, Search, FileText, BarChart3, Mail, Target, Zap, Github } fro
 
 export default function Landing() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-background via-muted to-secondary/5">
       {/* Header */}
       <header className="container mx-auto px-4 py-6">
         <nav className="flex items-center justify-between">
@@ -14,8 +14,8 @@ export default function Landing() {
               <Briefcase className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">AutoHired</h1>
-              <p className="text-sm text-gray-500">Lite Version</p>
+              <h1 className="text-xl font-bold text-foreground">AutoHired</h1>
+              <p className="text-sm text-muted-foreground">Lite Version</p>
             </div>
           </div>
           <Button onClick={() => window.location.href = '/api/login'}>
@@ -29,11 +29,11 @@ export default function Landing() {
         <Badge variant="outline" className="mb-4">
           Open Source • GitHub Available
         </Badge>
-        <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+        <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
           Automate Your Job
-          <span className="text-primary block">Application Process</span>
+          <span className="text-secondary block">Application Process</span>
         </h1>
-        <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+        <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
           Build your master resume, search jobs, generate tailored applications, and track your progress. 
           All in one intelligent platform designed for modern job seekers.
         </p>

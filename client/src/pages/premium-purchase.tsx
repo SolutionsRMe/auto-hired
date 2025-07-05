@@ -6,7 +6,7 @@ import { Link } from "wouter";
 
 export default function PremiumPurchase() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-4">
+    <div className="min-h-screen bg-gradient-to-br from-background to-secondary/5 p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex items-center mb-8">
@@ -21,10 +21,10 @@ export default function PremiumPurchase() {
         {/* Hero Section */}
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-4">
-            <Crown className="w-12 h-12 text-yellow-600 mr-3" />
-            <h1 className="text-4xl font-bold text-gray-900">AutoHired Premium</h1>
+            <Crown className="w-12 h-12 text-accent mr-3" />
+            <h1 className="text-4xl font-bold text-foreground">AutoHired Premium</h1>
           </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Supercharge your job search with AI-powered automation, advanced analytics, and premium features designed for serious job seekers.
           </p>
         </div>
@@ -123,7 +123,7 @@ export default function PremiumPurchase() {
                   <span>Export to multiple formats</span>
                 </li>
               </ul>
-              <Button className="w-full bg-yellow-600 hover:bg-yellow-700 text-white">
+              <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
                 Upgrade to Premium
               </Button>
             </CardContent>

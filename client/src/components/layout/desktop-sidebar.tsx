@@ -48,13 +48,13 @@ export default function DesktopSidebar() {
 
       {/* Premium Upgrade */}
       <div className="p-4 border-t border-gray-200">
-        <div className="bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg p-4 text-white">
+        <div className="bg-gradient-to-r from-secondary to-accent rounded-lg p-4 text-white">
           <h3 className="font-semibold mb-2">Upgrade to Premium</h3>
-          <p className="text-sm text-blue-100 mb-3">
+          <p className="text-sm text-white/80 mb-3">
             Get AI-powered features, auto-form filling, and advanced analytics
           </p>
           <Button 
-            className="w-full bg-white text-blue-600 font-medium py-2 px-4 rounded-md text-sm hover:bg-blue-50"
+            className="w-full bg-white text-secondary font-medium py-2 px-4 rounded-md text-sm hover:bg-secondary/5"
             onClick={() => {
               window.open('/premium-purchase', '_blank');
             }}

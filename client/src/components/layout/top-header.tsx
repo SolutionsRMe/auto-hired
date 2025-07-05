@@ -1,13 +1,16 @@
+import { useState } from "react";
 import { useLocation } from "wouter";
 import { useAuth } from "@/hooks/useAuth";
 import { Bell } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
+import NotificationPanel from "@/components/notifications/notification-panel";
 
 export default function TopHeader() {
   const [location] = useLocation();
   const { user } = useAuth();
   const isMobile = useIsMobile();
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 
   const getPageTitle = (path: string) => {
     switch (path) {
@@ -36,9 +39,7 @@ export default function TopHeader() {
             variant="ghost" 
             size="sm" 
             className="relative p-2"
-            onClick={() => {
-              alert("Notifications\n\nYou would see notifications about:\n• New job matches\n• Application status updates\n• Interview reminders\n• Goal achievements\n• System updates\n\nNo new notifications at this time.");
-            }}
+            onClick={() => setIsNotificationOpen(!isNotificationOpen)}
           >
             <Bell className="w-5 h-5" />
             <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
@@ -60,6 +61,10 @@ export default function TopHeader() {
           </div>
         </div>
       </div>
+      <NotificationPanel 
+        isOpen={isNotificationOpen} 
+        onClose={() => setIsNotificationOpen(false)} 
+      />
     </header>
   );
 }

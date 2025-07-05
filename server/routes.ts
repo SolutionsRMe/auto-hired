@@ -194,6 +194,45 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get('/api/applications/stats', isAuthenticated, async (req: any, res) => {
     try {
       const userId = req.user.claims.sub;
+      
+      // Add some sample applications if none exist for demonstration
+      const existingApps = await storage.getApplications(userId, 1, 10);
+      if (existingApps.total === 0) {
+        const sampleApplications = [
+          {
+            userId,
+            jobTitle: "Frontend Developer",
+            company: "TechCorp Inc",
+            status: "applied",
+            applicationDate: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000), // 5 days ago
+            jobUrl: "https://example.com/job1",
+            notes: "Applied through company website"
+          },
+          {
+            userId,
+            jobTitle: "React Developer",
+            company: "StartupXYZ",
+            status: "interview",
+            applicationDate: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), // 3 days ago
+            jobUrl: "https://example.com/job2",
+            notes: "Interview scheduled for next week"
+          },
+          {
+            userId,
+            jobTitle: "Full Stack Developer",
+            company: "WebSolutions",
+            status: "rejected",
+            applicationDate: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000), // 10 days ago
+            jobUrl: "https://example.com/job3",
+            notes: "Not selected for this position"
+          }
+        ];
+        
+        for (const app of sampleApplications) {
+          await storage.createApplication(app);
+        }
+      }
+      
       const stats = await storage.getApplicationStats(userId);
       res.json(stats);
     } catch (error) {

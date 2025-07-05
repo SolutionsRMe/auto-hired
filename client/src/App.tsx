@@ -13,6 +13,10 @@ import Applications from "@/pages/applications";
 import Profile from "@/pages/profile";
 import GoogleAuth from "@/pages/google-auth";
 import PremiumPurchase from "@/pages/premium-purchase";
+import About from "@/pages/about";
+import Privacy from "@/pages/privacy";
+import Terms from "@/pages/terms";
+import Support from "@/pages/support";
 import MainLayout from "@/components/layout/main-layout";
 
 function Router() {
@@ -32,6 +36,10 @@ function Router() {
         <Route path="/" component={Landing} />
         <Route path="/auth" component={GoogleAuth} />
         <Route path="/premium-purchase" component={PremiumPurchase} />
+        <Route path="/about" component={About} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/terms" component={Terms} />
+        <Route path="/support" component={Support} />
         <Route component={Landing} />
       </Switch>
     );
@@ -46,6 +54,10 @@ function Router() {
         <Route path="/applications" component={Applications} />
         <Route path="/profile" component={Profile} />
         <Route path="/premium-purchase" component={PremiumPurchase} />
+        <Route path="/about" component={About} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/terms" component={Terms} />
+        <Route path="/support" component={Support} />
         <Route component={NotFound} />
       </Switch>
     </MainLayout>

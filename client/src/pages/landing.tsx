@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Briefcase, Search, FileText, BarChart3, Mail, Target, Zap, Github } from "lucide-react";
+import { Link } from "wouter";
 
 export default function Landing() {
   return (
@@ -301,10 +302,10 @@ export default function Landing() {
               </div>
             </div>
             <div className="flex items-center space-x-6 text-sm text-text-light/70">
-              <a href="#" className="hover:text-text-light transition-colors">About</a>
-              <a href="#" className="hover:text-text-light transition-colors">Privacy</a>
-              <a href="#" className="hover:text-text-light transition-colors">Terms</a>
-              <a href="#" className="hover:text-text-light transition-colors">Support</a>
+              <Link href="/about" className="hover:text-text-light transition-colors">About</Link>
+              <Link href="/privacy" className="hover:text-text-light transition-colors">Privacy</Link>
+              <Link href="/terms" className="hover:text-text-light transition-colors">Terms</Link>
+              <Link href="/support" className="hover:text-text-light transition-colors">Support</Link>
             </div>
           </div>
           <div className="border-t border-divider mt-8 pt-8 text-center text-sm text-text-light/70">

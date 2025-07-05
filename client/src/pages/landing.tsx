@@ -31,7 +31,7 @@ export default function Landing() {
         </Badge>
         <h1 className="text-5xl md:text-6xl font-bold text-foreground mb-6">
           Automate Your Job
-          <span className="text-secondary block">Application Process</span>
+          <span className="block" style={{ color: '#00C2A8' }}>Application Process</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
           Build your master resume, search jobs, generate tailored applications, and track your progress. 
@@ -41,6 +41,7 @@ export default function Landing() {
           <Button 
             size="lg" 
             className="text-lg px-8 py-6"
+            style={{ backgroundColor: '#1E2A38', color: '#F8F9FA' }}
             onClick={() => window.location.href = '/api/login'}
           >
             Get Started Free
@@ -48,7 +49,8 @@ export default function Landing() {
           <Button 
             variant="outline" 
             size="lg" 
-            className="text-lg px-8 py-6"
+            className="text-lg px-8 py-6 border-2"
+            style={{ borderColor: '#00C2A8', color: '#00C2A8' }}
             onClick={() => window.location.href = '/premium-purchase'}
           >
             <Zap className="w-5 h-5 mr-2" />
@@ -71,8 +73,8 @@ export default function Landing() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Card className="border-0 shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
-                <FileText className="w-6 h-6 text-secondary" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(0, 194, 168, 0.1)' }}>
+                <FileText className="w-6 h-6" style={{ color: '#00C2A8' }} />
               </div>
               <CardTitle>Master Resume Builder</CardTitle>
               <CardDescription>
@@ -83,8 +85,8 @@ export default function Landing() {
 
           <Card className="border-0 shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 bg-success/10 rounded-lg flex items-center justify-center mb-4">
-                <Search className="w-6 h-6 text-success" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(46, 204, 113, 0.1)' }}>
+                <Search className="w-6 h-6" style={{ color: '#2ECC71' }} />
               </div>
               <CardTitle>Smart Job Search</CardTitle>
               <CardDescription>
@@ -95,8 +97,8 @@ export default function Landing() {
 
           <Card className="border-0 shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="w-6 h-6 text-accent" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(255, 107, 107, 0.1)' }}>
+                <Zap className="w-6 h-6" style={{ color: '#FF6B6B' }} />
               </div>
               <CardTitle>Tailored Applications</CardTitle>
               <CardDescription>
@@ -107,8 +109,8 @@ export default function Landing() {
 
           <Card className="border-0 shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 bg-warning/10 rounded-lg flex items-center justify-center mb-4">
-                <BarChart3 className="w-6 h-6 text-warning" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(241, 196, 15, 0.1)' }}>
+                <BarChart3 className="w-6 h-6" style={{ color: '#F1C40F' }} />
               </div>
               <CardTitle>Application Tracking</CardTitle>
               <CardDescription>
@@ -119,8 +121,8 @@ export default function Landing() {
 
           <Card className="border-0 shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                <Mail className="w-6 h-6 text-red-600" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(30, 42, 56, 0.1)' }}>
+                <Mail className="w-6 h-6" style={{ color: '#1E2A38' }} />
               </div>
               <CardTitle>Email Summaries</CardTitle>
               <CardDescription>
@@ -131,8 +133,8 @@ export default function Landing() {
 
           <Card className="border-0 shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 bg-indigo-100 rounded-lg flex items-center justify-center mb-4">
-                <Target className="w-6 h-6 text-indigo-600" />
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center mb-4" style={{ backgroundColor: 'rgba(0, 194, 168, 0.1)' }}>
+                <Target className="w-6 h-6" style={{ color: '#00C2A8' }} />
               </div>
               <CardTitle>Goal Tracking</CardTitle>
               <CardDescription>

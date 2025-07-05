@@ -11,6 +11,7 @@ import ResumeBuilder from "@/pages/resume-builder";
 import JobSearch from "@/pages/job-search";
 import Applications from "@/pages/applications";
 import Profile from "@/pages/profile";
+import GoogleAuth from "@/pages/google-auth";
 import MainLayout from "@/components/layout/main-layout";
 
 function Router() {
@@ -28,6 +29,7 @@ function Router() {
     return (
       <Switch>
         <Route path="/" component={Landing} />
+        <Route path="/auth" component={GoogleAuth} />
         <Route component={Landing} />
       </Switch>
     );

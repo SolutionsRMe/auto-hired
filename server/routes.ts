@@ -28,6 +28,31 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Firebase user sync route (for when Firebase credentials are provided)
+  app.post('/api/auth/sync-user', async (req, res) => {
+    try {
+      const { id, email, firstName, lastName, profileImageUrl } = req.body;
+      
+      if (!id) {
+        return res.status(400).json({ message: "User ID is required" });
+      }
+
+      const userData = {
+        id,
+        email,
+        firstName,
+        lastName,
+        profileImageUrl,
+      };
+
+      const user = await storage.upsertUser(userData);
+      res.json(user);
+    } catch (error) {
+      console.error("Error syncing user:", error);
+      res.status(500).json({ message: "Failed to sync user" });
+    }
+  });
+
   // Resume Profile routes
   app.get('/api/resume-profile', isAuthenticated, async (req: any, res) => {
     try {

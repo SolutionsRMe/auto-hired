@@ -199,7 +199,7 @@ export default function Landing() {
               <Button 
                 className="w-full" 
                 variant="outline"
-                onClick={() => window.location.href = '/api/login'}
+                onClick={() => window.location.href = '/auth'}
               >
                 Get Started
               </Button>
@@ -281,7 +281,7 @@ export default function Landing() {
             size="lg" 
             variant="secondary" 
             className="text-lg px-8 py-6"
-            onClick={() => window.location.href = '/api/login'}
+            onClick={() => window.location.href = '/auth'}
           >
             Start Your Free Account
           </Button>

@@ -11,6 +11,7 @@ export default function TopHeader() {
   const { user } = useAuth();
   const isMobile = useIsMobile();
   const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const [unreadCount, setUnreadCount] = useState(5); // This will be updated by the notification panel
 
   const getPageTitle = (path: string) => {
     switch (path) {
@@ -42,7 +43,9 @@ export default function TopHeader() {
             onClick={() => setIsNotificationOpen(!isNotificationOpen)}
           >
             <Bell className="w-5 h-5" />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            {unreadCount > 0 && (
+              <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+            )}
           </Button>
           <div className="flex items-center space-x-3">
             <img
@@ -63,7 +66,8 @@ export default function TopHeader() {
       </div>
       <NotificationPanel 
         isOpen={isNotificationOpen} 
-        onClose={() => setIsNotificationOpen(false)} 
+        onClose={() => setIsNotificationOpen(false)}
+        onUnreadCountChange={setUnreadCount}
       />
     </header>
   );

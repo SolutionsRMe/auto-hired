@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -17,9 +17,10 @@ interface Notification {
 interface NotificationPanelProps {
   isOpen: boolean;
   onClose: () => void;
+  onUnreadCountChange: (count: number) => void;
 }
 
-export default function NotificationPanel({ isOpen, onClose }: NotificationPanelProps) {
+export default function NotificationPanel({ isOpen, onClose, onUnreadCountChange }: NotificationPanelProps) {
   const [notifications, setNotifications] = useState<Notification[]>([
     {
       id: "1",
@@ -126,6 +127,11 @@ export default function NotificationPanel({ isOpen, onClose }: NotificationPanel
   };
 
   const unreadCount = notifications.filter(n => !n.read).length;
+
+  // Update parent component when unread count changes
+  useEffect(() => {
+    onUnreadCountChange(unreadCount);
+  }, [unreadCount, onUnreadCountChange]);
 
   if (!isOpen) return null;
 

@@ -98,7 +98,7 @@ export default function ResumeBuilder() {
                   variant="outline" 
                   className="flex items-center space-x-2"
                   onClick={() => {
-                    window.open('https://github.com', '_blank');
+                    alert("AutoHired Premium - Advanced Resume Features\n\n🚀 Premium Features:\n• Professional resume templates and themes\n• AI-powered resume optimization and suggestions\n• ATS compatibility scoring and improvements\n• Multiple export formats (PDF, Word, LinkedIn)\n• Resume A/B testing and performance analytics\n• Custom sections and advanced formatting\n• Industry-specific resume templates\n\n📈 Get noticed by recruiters with professionally optimized resumes.\n\nComing soon with full subscription management!");
                   }}
                 >
                   <FileText className="w-4 h-4" />

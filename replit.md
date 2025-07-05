@@ -150,6 +150,13 @@ Changelog:
   * Enhanced footer contrast and typography with improved text opacity
   * Added transition effects to footer links for smoother interactions
   * Updated privacy policy and terms of service dates to July 2025
+- July 05, 2025. Set up GitHub deployment and fixed UI responsiveness:
+  * Created GitHub Actions workflow for automated deployment to GitHub Pages
+  * Fixed Contact Sales button responsiveness on premium purchase page
+  * Enhanced email summaries card icon brightness in landing page
+  * Fixed premium purchase page table styling with proper dark theme colors
+  * Created comprehensive README.md with deployment instructions
+  * Enabled session table creation in authentication system
 ```
 
 ## User Preferences

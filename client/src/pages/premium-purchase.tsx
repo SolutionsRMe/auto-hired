@@ -215,8 +215,11 @@ export default function PremiumPurchase() {
             <Button 
               variant="outline" 
               size="lg"
-              className="text-text-light border-divider hover:bg-surface/50"
-              onClick={() => window.location.href = 'mailto:info@thesolutiondesk.ca?subject=AutoHired Premium Sales Inquiry'}
+              className="text-text-light border-divider hover:bg-surface/50 transition-all duration-200"
+              onClick={(e) => {
+                e.preventDefault();
+                window.open('mailto:info@thesolutiondesk.ca?subject=AutoHired Premium Sales Inquiry', '_self');
+              }}
             >
               Contact Sales
             </Button>

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Briefcase, Search, FileText, BarChart3, Mail, Target, Zap, Github } from "lucide-react";
+import { Briefcase, Search, FileText, BarChart3, Mail, Target, Zap, Github, CheckCircle, Star } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Landing() {
@@ -160,7 +160,7 @@ export default function Landing() {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Lite Version */}
-          <Card className="border-2 border-divider bg-surface text-text-light">
+          <Card className="border-2 border-divider bg-surface text-text-light shadow-xl hover:shadow-2xl transition-shadow duration-300">
             <CardHeader className="text-center">
               <Badge variant="outline" className="w-fit mx-auto mb-2">Open Source</Badge>
               <CardTitle className="text-2xl text-text-light">AutoHired Lite</CardTitle>
@@ -170,33 +170,23 @@ export default function Landing() {
             <CardContent className="space-y-4">
               <ul className="space-y-3">
                 <li className="flex items-center text-text-light">
-                  <div className="w-5 h-5 bg-success/20 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-success rounded-full"></div>
-                  </div>
+                  <CheckCircle className="w-5 h-5 text-success mr-3" />
                   Basic resume builder
                 </li>
                 <li className="flex items-center text-text-light">
-                  <div className="w-5 h-5 bg-success/20 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-success rounded-full"></div>
-                  </div>
+                  <CheckCircle className="w-5 h-5 text-success mr-3" />
                   Job search & filtering
                 </li>
                 <li className="flex items-center text-text-light">
-                  <div className="w-5 h-5 bg-success/20 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-success rounded-full"></div>
-                  </div>
+                  <CheckCircle className="w-5 h-5 text-success mr-3" />
                   Application tracking
                 </li>
                 <li className="flex items-center text-text-light">
-                  <div className="w-5 h-5 bg-success/20 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-success rounded-full"></div>
-                  </div>
+                  <CheckCircle className="w-5 h-5 text-success mr-3" />
                   Email summaries
                 </li>
                 <li className="flex items-center text-text-light">
-                  <div className="w-5 h-5 bg-success/20 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-success rounded-full"></div>
-                  </div>
+                  <CheckCircle className="w-5 h-5 text-success mr-3" />
                   GitHub source code
                 </li>
               </ul>
@@ -210,7 +200,7 @@ export default function Landing() {
           </Card>
 
           {/* Premium Version */}
-          <Card className="border-2 border-accent bg-surface text-text-light relative">
+          <Card className="border-2 border-accent bg-surface text-text-light relative shadow-xl hover:shadow-2xl transition-shadow duration-300 ring-2 ring-accent/20">
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
               <Badge className="bg-accent text-primary">Most Popular</Badge>
             </div>
@@ -222,44 +212,32 @@ export default function Landing() {
             <CardContent className="space-y-4">
               <ul className="space-y-3">
                 <li className="flex items-center text-text-light">
-                  <div className="w-5 h-5 bg-success/20 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-success rounded-full"></div>
-                  </div>
+                  <CheckCircle className="w-5 h-5 text-success mr-3" />
                   Everything in Lite
                 </li>
                 <li className="flex items-center text-text-light">
-                  <div className="w-5 h-5 bg-accent/20 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  </div>
+                  <Star className="w-5 h-5 text-accent mr-3" />
                   AI-powered resume optimization
                 </li>
                 <li className="flex items-center text-text-light">
-                  <div className="w-5 h-5 bg-accent/20 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  </div>
+                  <Zap className="w-5 h-5 text-accent mr-3" />
                   Automatic form submissions
                 </li>
                 <li className="flex items-center text-text-light">
-                  <div className="w-5 h-5 bg-accent/20 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  </div>
+                  <FileText className="w-5 h-5 text-accent mr-3" />
                   OCR document parsing
                 </li>
                 <li className="flex items-center text-text-light">
-                  <div className="w-5 h-5 bg-accent/20 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  </div>
+                  <BarChart3 className="w-5 h-5 text-accent mr-3" />
                   Advanced analytics
                 </li>
                 <li className="flex items-center text-text-light">
-                  <div className="w-5 h-5 bg-accent/20 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-accent rounded-full"></div>
-                  </div>
+                  <Target className="w-5 h-5 text-accent mr-3" />
                   Priority support
                 </li>
               </ul>
               <Button 
-                className="w-full bg-accent text-primary hover:bg-accent/90 transition-all duration-200 transform hover:scale-105"
+                className="w-full bg-accent text-primary hover:bg-[#e85d5d] transition-all duration-200 transform hover:scale-105"
                 onClick={() => window.location.href = '/premium-purchase'}
               >
                 Try Premium
@@ -298,17 +276,17 @@ export default function Landing() {
               </div>
               <div>
                 <h3 className="font-bold text-text-light">AutoHired</h3>
-                <p className="text-sm text-text-light/70">Job Application Automation</p>
+                <p className="text-sm text-text-light/80">Job Application Automation</p>
               </div>
             </div>
-            <div className="flex items-center space-x-6 text-sm text-text-light/70">
-              <Link href="/about" className="hover:text-text-light transition-colors">About</Link>
-              <Link href="/privacy" className="hover:text-text-light transition-colors">Privacy</Link>
-              <Link href="/terms" className="hover:text-text-light transition-colors">Terms</Link>
-              <Link href="/support" className="hover:text-text-light transition-colors">Support</Link>
+            <div className="flex items-center space-x-6 text-sm text-text-light/80">
+              <Link href="/about" className="hover:text-text-light transition-colors duration-200">About</Link>
+              <Link href="/privacy" className="hover:text-text-light transition-colors duration-200">Privacy</Link>
+              <Link href="/terms" className="hover:text-text-light transition-colors duration-200">Terms</Link>
+              <Link href="/support" className="hover:text-text-light transition-colors duration-200">Support</Link>
             </div>
           </div>
-          <div className="border-t border-divider mt-8 pt-8 text-center text-sm text-text-light/70">
+          <div className="border-t border-divider mt-8 pt-8 text-center text-sm text-text-light/80">
             © 2025 AutoHired. Open source job application automation platform.
           </div>
         </div>

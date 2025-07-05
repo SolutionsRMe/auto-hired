@@ -75,7 +75,7 @@ export default function Support() {
                   <Mail className="w-5 h-5 text-accent" />
                   <div>
                     <p className="font-medium text-text-light">Email Support</p>
-                    <p className="text-sm text-text-light/70">support@autohired.com</p>
+                    <p className="text-sm text-text-light/70">info@thesolutiondesk.ca</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3 p-3 bg-primary/50 rounded-lg">
@@ -176,7 +176,10 @@ export default function Support() {
             Can't find what you're looking for? Our support team is ready to help you succeed 
             in your job search.
           </p>
-          <Button className="bg-secondary text-primary hover:bg-secondary/90">
+          <Button 
+            className="bg-secondary text-primary hover:bg-secondary/90"
+            onClick={() => window.location.href = 'mailto:info@thesolutiondesk.ca?subject=AutoHired Support Request'}
+          >
             <Mail className="w-4 h-4 mr-2" />
             Contact Support Team
           </Button>

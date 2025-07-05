@@ -14,7 +14,7 @@ export default function Privacy() {
             </Button>
           </Link>
           <h1 className="text-4xl font-bold mb-2">Privacy Policy</h1>
-          <p className="text-text-light/70">Last updated: January 2025</p>
+          <p className="text-text-light/70">Last updated: July 2025</p>
         </div>
 
         <div className="prose prose-invert max-w-none">

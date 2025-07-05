@@ -60,10 +60,10 @@ export default function Landing() {
       {/* Features Grid */}
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Everything You Need to Land Your Dream Job
           </h2>
-          <p className="text-xl text-gray-600">
+          <p className="text-xl text-muted-foreground">
             Streamline your job search with powerful automation tools
           </p>
         </div>
@@ -71,8 +71,8 @@ export default function Landing() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <Card className="border-0 shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                <FileText className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 bg-secondary/10 rounded-lg flex items-center justify-center mb-4">
+                <FileText className="w-6 h-6 text-secondary" />
               </div>
               <CardTitle>Master Resume Builder</CardTitle>
               <CardDescription>
@@ -83,8 +83,8 @@ export default function Landing() {
 
           <Card className="border-0 shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                <Search className="w-6 h-6 text-green-600" />
+              <div className="w-12 h-12 bg-success/10 rounded-lg flex items-center justify-center mb-4">
+                <Search className="w-6 h-6 text-success" />
               </div>
               <CardTitle>Smart Job Search</CardTitle>
               <CardDescription>
@@ -95,8 +95,8 @@ export default function Landing() {
 
           <Card className="border-0 shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                <Zap className="w-6 h-6 text-purple-600" />
+              <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center mb-4">
+                <Zap className="w-6 h-6 text-accent" />
               </div>
               <CardTitle>Tailored Applications</CardTitle>
               <CardDescription>
@@ -107,8 +107,8 @@ export default function Landing() {
 
           <Card className="border-0 shadow-lg">
             <CardHeader>
-              <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mb-4">
-                <BarChart3 className="w-6 h-6 text-yellow-600" />
+              <div className="w-12 h-12 bg-warning/10 rounded-lg flex items-center justify-center mb-4">
+                <BarChart3 className="w-6 h-6 text-warning" />
               </div>
               <CardTitle>Application Tracking</CardTitle>
               <CardDescription>
@@ -160,14 +160,14 @@ export default function Landing() {
             <CardHeader className="text-center">
               <Badge variant="outline" className="w-fit mx-auto mb-2">Open Source</Badge>
               <CardTitle className="text-2xl">AutoHired Lite</CardTitle>
-              <div className="text-4xl font-bold text-gray-900">Free</div>
+              <div className="text-4xl font-bold text-foreground">Free</div>
               <CardDescription>Perfect for getting started</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <ul className="space-y-3">
                 <li className="flex items-center">
-                  <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                    <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                  <div className="w-5 h-5 bg-success/10 rounded-full flex items-center justify-center mr-3">
+                    <div className="w-2 h-2 bg-success rounded-full"></div>
                   </div>
                   Basic resume builder
                 </li>

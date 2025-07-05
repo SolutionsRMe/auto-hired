@@ -47,16 +47,16 @@ export default function Dashboard() {
         <Card className="stat-card">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-500">Applications Sent</p>
-              <p className="text-2xl font-semibold text-gray-900">
+              <p className="text-sm text-muted-foreground">Applications Sent</p>
+              <p className="text-2xl font-semibold text-foreground">
                 {applicationStats.total}
               </p>
             </div>
-            <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-              <NotebookPen className="w-5 h-5 text-primary" />
+            <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center">
+              <NotebookPen className="w-5 h-5 text-secondary" />
             </div>
           </div>
-          <p className="text-xs text-green-600 mt-2 flex items-center">
+          <p className="text-xs text-success mt-2 flex items-center">
             <ArrowUp className="w-3 h-3 mr-1" />
             +{applicationStats.thisWeek} this week
           </p>
@@ -65,16 +65,16 @@ export default function Dashboard() {
         <Card className="stat-card">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-500">Interviews</p>
-              <p className="text-2xl font-semibold text-gray-900">
+              <p className="text-sm text-muted-foreground">Interviews</p>
+              <p className="text-2xl font-semibold text-foreground">
                 {applicationStats.interviews}
               </p>
             </div>
-            <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-              <Calendar className="w-5 h-5 text-green-600" />
+            <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center">
+              <Calendar className="w-5 h-5 text-accent" />
             </div>
           </div>
-          <p className="text-xs text-green-600 mt-2 flex items-center">
+          <p className="text-xs text-success mt-2 flex items-center">
             <ArrowUp className="w-3 h-3 mr-1" />
             +3 this week
           </p>

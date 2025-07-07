@@ -17,6 +17,16 @@ A comprehensive job application automation platform that empowers job seekers wi
 - 🚀 Premium Templates
 - 🚀 Priority Support
 
+## Badges
+
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![License](https://img.shields.io/badge/license-MIT-blue)
+![Last Commit](https://img.shields.io/badge/last_commit-July_2025-orange)
+
+## Visuals
+
+![AutoHired UI](https://via.placeholder.com/800x400.png?text=AutoHired+UI+Screenshot)
+
 ## Tech Stack
 
 - **Frontend**: React 18 + TypeScript with Vite

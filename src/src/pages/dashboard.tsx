@@ -142,7 +142,7 @@ export default function Dashboard() {
                 </div>
               ))
             ) : (recentApplications?.data?.length ?? 0) > 0 ? (
-              recentApplications.data.map((application: any) => (
+              (recentApplications?.data ?? []).map((application: any) => (
                 <div key={application.id} className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
                     <div className="w-10 h-10 bg-gray-100 rounded-lg flex items-center justify-center">
@@ -211,7 +211,7 @@ export default function Dashboard() {
                 </div>
               ))
             ) : (recommendedJobs?.data?.length ?? 0) > 0 ? (
-              recommendedJobs.data.slice(0, 2).map((job: any) => (
+              (recommendedJobs?.data ?? []).slice(0, 2).map((job: any) => (
                 <div key={job.id} className="border border-gray-200 rounded-lg p-4">
                   <div className="flex items-start justify-between mb-2">
                     <div>

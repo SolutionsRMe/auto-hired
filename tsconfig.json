@@ -1,6 +1,13 @@
 {
   "include": ["src"],
-  "exclude": ["node_modules", "dist", "build", "**/*.test.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "build",
+    "**/*.test.ts",
+    "src/pages",
+    "src/bot"
+  ],
   "compilerOptions": {
     "incremental": true,
     "tsBuildInfoFile": "./node_modules/typescript/tsbuildinfo",
@@ -16,8 +23,8 @@
     "baseUrl": ".",
     "types": ["vite/client", "node", "react"],
     "paths": {
-      "@/*": ["src/*"],
-      "@shared/*": ["./shared/*"]
+      "@/*": ["src/src/*"],
+      "@shared/*": ["./packages/core/*"]
     }
   }
 }

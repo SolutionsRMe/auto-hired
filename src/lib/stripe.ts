@@ -120,8 +120,8 @@ export async function getSubscriptionStatus(): Promise<{
 
 // Stripe pricing configuration
 export const STRIPE_PRICES = {
-  PRO_MONTHLY: process.env.STRIPE_PRO_MONTHLY_PRICE_ID || 'price_1234567890',
-  PRO_YEARLY: process.env.STRIPE_PRO_YEARLY_PRICE_ID || 'price_0987654321',
+  PRO_MONTHLY: import.meta.env.VITE_STRIPE_PRO_MONTHLY_PRICE_ID || 'price_1234567890',
+  PRO_YEARLY: import.meta.env.VITE_STRIPE_PRO_YEARLY_PRICE_ID || 'price_0987654321',
 } as const;
 
 export const PRICING_PLANS = {

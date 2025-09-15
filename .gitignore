@@ -12,3 +12,6 @@ vite.config.ts.*
 
 # Security: never track cookies.txt
 cookies.txt
+
+# Security: never track cookies.txt
+cookies.txt

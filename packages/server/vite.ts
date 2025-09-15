@@ -7,7 +7,7 @@ import type { UserConfig } from "vite";
 const viteConfig: UserConfig = {
   resolve: {
     alias: {
-      "@": require("path").resolve(__dirname, "..", "src", "src"),
+      "@": require("path").resolve(__dirname, "..", "src"),
       "@shared": require("path").resolve(__dirname, "..", "packages", "core"),
       "@assets": require("path").resolve(__dirname, "..", "attached_assets"),
     },

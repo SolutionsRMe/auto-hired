@@ -1,84 +1,83 @@
-import React, { Suspense, lazy } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
+import { Switch, Route } from "wouter";
+import { queryClient } from "./lib/queryClient";
+import { QueryClientProvider } from "@tanstack/react-query";
+import { Toaster } from "@/components/ui/toaster";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { useAuth } from "@/hooks/useAuth";
+import NotFound from "@/pages/not-found";
+import Landing from "@/pages/landing";
+import Dashboard from "@/pages/dashboard";
+import ResumeBuilder from "@/pages/resume-builder";
+import JobSearch from "@/pages/job-search";
+import Applications from "@/pages/applications";
+import Profile from "@/pages/profile";
+import GoogleAuth from "@/pages/google-auth";
+import PremiumPurchase from "@/pages/premium-purchase";
+import SubscriptionSuccess from "@/pages/subscription-success";
+import Billing from "@/pages/billing";
+import About from "@/pages/about";
+import Privacy from "@/pages/privacy";
+import Terms from "@/pages/terms";
+import Support from "@/pages/support";
+import MainLayout from "@/components/layout/main-layout";
 
-// Lazy load pages for better performance
-const Dashboard = lazy(() => import('@/pages/Dashboard'));
-const Upgrade = lazy(() => import('@/pages/Upgrade'));
-const BillingPage = lazy(() => import('@/pages/BillingPage'));
+function Router() {
+  const { isAuthenticated, isLoading } = useAuth();
 
-// Loading component for suspense fallback
-const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center">
-    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-  </div>
-);
-
-// Protected route component
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  // In a real app, you would check if the user is authenticated
-  const isAuthenticated = true; // Replace with actual auth check
-  
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+      </div>
+    );
   }
-  
-  return <>{children}</>;
-};
 
-export default function App() {
+  if (!isAuthenticated) {
+    return (
+      <Switch>
+        <Route path="/" component={Landing} />
+        <Route path="/auth" component={GoogleAuth} />
+        <Route path="/google-auth" component={GoogleAuth} />
+        <Route path="/premium-purchase" component={PremiumPurchase} />
+        <Route path="/about" component={About} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/terms" component={Terms} />
+        <Route path="/support" component={Support} />
+        <Route component={Landing} />
+      </Switch>
+    );
+  }
+
   return (
-    <Router>
-      <Suspense fallback={<LoadingFallback />}>
-        <Routes>
-          <Route path="/" element={
-            <ProtectedRoute>
-              <Dashboard />
-            </ProtectedRoute>
-          } />
-          
-          <Route path="/billing" element={
-            <ProtectedRoute>
-              <BillingPage />
-            </ProtectedRoute>
-          } />
-          
-          <Route path="/upgrade" element={
-            <ProtectedRoute>
-              <Upgrade />
-            </ProtectedRoute>
-          } />
-          
-          {/* Add more routes here */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-        
-        {/* Global toast notifications */}
-        <Toaster 
-          position="top-center"
-          toastOptions={{
-            duration: 5000,
-            style: {
-              background: '#363636',
-              color: '#fff',
-            },
-            success: {
-              duration: 3000,
-              iconTheme: {
-                primary: '#10B981',
-                secondary: 'white',
-              },
-            },
-            error: {
-              duration: 4000,
-              iconTheme: {
-                primary: '#EF4444',
-                secondary: 'white',
-              },
-            },
-          }}
-        />
-      </Suspense>
-    </Router>
+    <MainLayout>
+      <Switch>
+        <Route path="/" component={Dashboard} />
+        <Route path="/resume" component={ResumeBuilder} />
+        <Route path="/jobs" component={JobSearch} />
+        <Route path="/applications" component={Applications} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/billing" component={Billing} />
+        <Route path="/premium-purchase" component={PremiumPurchase} />
+        <Route path="/subscription/success" component={SubscriptionSuccess} />
+        <Route path="/about" component={About} />
+        <Route path="/privacy" component={Privacy} />
+        <Route path="/terms" component={Terms} />
+        <Route path="/support" component={Support} />
+        <Route component={NotFound} />
+      </Switch>
+    </MainLayout>
   );
 }
+
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Router />
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+}
+
+export default App;

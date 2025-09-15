@@ -25,9 +25,6 @@ export interface CheckoutSessionResponse {
   url: string;
 }
 
-/**
- * Create a Stripe Checkout session
- */
 export async function createCheckoutSession(data: CreateCheckoutSessionRequest): Promise<CheckoutSessionResponse> {
   const response = await fetch('/api/stripe/create-checkout-session', {
     method: 'POST',
@@ -45,9 +42,6 @@ export async function createCheckoutSession(data: CreateCheckoutSessionRequest):
   return response.json();
 }
 
-/**
- * Redirect to Stripe Checkout
- */
 export async function redirectToCheckout(priceId: string, mode: 'payment' | 'subscription' = 'subscription') {
   try {
     const stripe = await getStripe();
@@ -69,9 +63,6 @@ export async function redirectToCheckout(priceId: string, mode: 'payment' | 'sub
   }
 }
 
-/**
- * Create a customer portal session
- */
 export async function createPortalSession(): Promise<{ url: string }> {
   const response = await fetch('/api/stripe/create-portal-session', {
     method: 'POST',
@@ -88,9 +79,6 @@ export async function createPortalSession(): Promise<{ url: string }> {
   return response.json();
 }
 
-/**
- * Redirect to customer portal
- */
 export async function redirectToCustomerPortal() {
   try {
     const { url } = await createPortalSession();
@@ -101,9 +89,6 @@ export async function redirectToCustomerPortal() {
   }
 }
 
-/**
- * Get user's subscription status
- */
 export async function getSubscriptionStatus(): Promise<{
   hasActiveSubscription: boolean;
   subscriptions: any[];
@@ -118,7 +103,6 @@ export async function getSubscriptionStatus(): Promise<{
   return response.json();
 }
 
-// Stripe pricing configuration
 export const STRIPE_PRICES = {
   PRO_MONTHLY: import.meta.env.VITE_STRIPE_PRO_MONTHLY_PRICE_ID || 'price_1234567890',
   PRO_YEARLY: import.meta.env.VITE_STRIPE_PRO_YEARLY_PRICE_ID || 'price_0987654321',
@@ -128,14 +112,14 @@ export const PRICING_PLANS = {
   lite: {
     name: 'Lite',
     price: 0,
-    interval: null,
+    interval: null as null,
     features: [
       'Manual application tracking',
       'Basic job search',
       'Resume builder (1 template)',
       'Up to 5 applications/month',
       'Email summaries',
-    ],
+    ] as string[],
   },
   pro_monthly: {
     name: 'Pro',
@@ -150,22 +134,22 @@ export const PRICING_PLANS = {
       'Multiple resume templates',
       'Priority support',
       'ATS compatibility scoring',
-    ],
+    ] as string[],
   },
   pro_yearly: {
     name: 'Pro',
-    price: 290, // $24.17/month when billed yearly
+    price: 290,
     interval: 'year' as const,
     stripePriceId: STRIPE_PRICES.PRO_YEARLY,
     features: [
       'Everything in Lite',
-      'Unlimited automated applications', 
+      'Unlimited automated applications',
       'AI-powered resume optimization',
       'Advanced analytics',
       'Multiple resume templates',
       'Priority support',
       'ATS compatibility scoring',
       '2 months free (yearly billing)',
-    ],
+    ] as string[],
   },
 } as const;

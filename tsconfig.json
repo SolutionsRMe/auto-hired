@@ -1,5 +1,7 @@
 {
-  "include": ["src"],
+  "include": [
+    "src"
+  ],
   "exclude": [
     "node_modules",
     "dist",
@@ -14,17 +16,30 @@
     "noEmit": true,
     "module": "ESNext",
     "strict": true,
-    "lib": ["esnext", "dom", "dom.iterable"],
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable"
+    ],
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "allowImportingTsExtensions": true,
     "moduleResolution": "bundler",
     "baseUrl": ".",
-    "types": ["vite/client", "node", "react"],
+    "types": [
+      "vite/client",
+      "node",
+      "react"
+    ],
     "paths": {
-      "@/*": ["src/src/*"],
-      "@shared/*": ["./packages/core/*"]
-    }
+      "@/*": [
+        "src/*"
+      ],
+      "@shared/*": [
+        "./packages/core/*"
+      ]
+    },
+    "forceConsistentCasingInFileNames": true
   }
 }

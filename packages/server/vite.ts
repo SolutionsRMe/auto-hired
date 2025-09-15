@@ -3,7 +3,21 @@ import fs from "fs";
 import path from "path";
 import { createServer as createViteServer, createLogger } from "vite";
 import { type Server } from "http";
-import viteConfig from "../vite.config";
+import type { UserConfig } from "vite";
+const viteConfig: UserConfig = {
+  resolve: {
+    alias: {
+      "@": require("path").resolve(__dirname, "..", "src", "src"),
+      "@shared": require("path").resolve(__dirname, "..", "packages", "core"),
+      "@assets": require("path").resolve(__dirname, "..", "attached_assets"),
+    },
+  },
+  root: require("path").resolve(__dirname, "..", "src"),
+  build: {
+    outDir: require("path").resolve(__dirname, "..", "dist/public"),
+    emptyOutDir: true,
+  },
+};
 import { nanoid } from "nanoid";
 
 const viteLogger = createLogger();

@@ -11,8 +11,7 @@ import {
   insertUserPreferencesSchema
 } from "@shared/schema";
 import { z } from "zod";
-import { requirePro } from "./middleware/requirePro";
-import { stripeService } from "./stripe";
+import { requirePremium } from "./billing";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Auth middleware
@@ -363,8 +362,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Pro-only automation route (placeholder) - gated by requirePro
-  app.post('/api/automation/run-pro', isAuthenticated, requirePro, async (req: any, res) => {
+  // Pro-only automation route (placeholder) - gated by requirePremium
+  app.post('/api/automation/run-pro', isAuthenticated, requirePremium, async (req: any, res) => {
     // This is a placeholder endpoint demonstrating Pro gating
     // Replace with real automation handler logic
     res.json({ message: 'Automation job queued (Pro only feature)' });
@@ -440,125 +439,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error initializing sample data:", error);
       res.status(500).json({ message: "Failed to initialize sample data" });
-    }
-  });
-
-  // Stripe routes (toggle real vs mock based on PAYMENTS_ENABLED)
-  app.post('/api/stripe/create-checkout-session', isAuthenticated, async (req: any, res) => {
-    try {
-      const { priceId, mode = 'subscription' } = req.body;
-      const userId = req.user.claims.sub;
-      const user = await storage.getUser(userId);
-
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
-      }
-
-      const successUrl = `${req.protocol}://${req.get('host')}/subscription/success?session_id={CHECKOUT_SESSION_ID}`;
-      const cancelUrl = `${req.protocol}://${req.get('host')}/premium-purchase`;
-
-      const paymentsEnabled = process.env.PAYMENTS_ENABLED === 'true';
-      if (paymentsEnabled) {
-        const customer = await stripeService.createOrRetrieveCustomer(userId, user.email ?? '', `${user.firstName ?? ''} ${user.lastName ?? ''}`.trim());
-        const session = await stripeService.createCheckoutSession({
-          priceId,
-          userId,
-          userEmail: user.email ?? '',
-          successUrl,
-          cancelUrl,
-          mode,
-        });
-
-        return res.json({ sessionId: session.id, url: session.url });
-      }
-
-      // Mock (dev)
-      const mockSession = {
-        id: 'cs_mock_session_id',
-        url: `${req.protocol}://${req.get('host')}/subscription/success?mock=true`,
-      };
-
-      res.json({ 
-        sessionId: mockSession.id, 
-        url: mockSession.url,
-        message: 'Mock Stripe session (payments not enabled)'
-      });
-    } catch (error) {
-      console.error('Error creating checkout session:', error);
-      res.status(500).json({ message: 'Failed to create checkout session' });
-    }
-  });
-
-  app.post('/api/stripe/create-portal-session', isAuthenticated, async (req: any, res) => {
-    try {
-      const userId = req.user.claims.sub;
-      const user = await storage.getUser(userId);
-
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
-      }
-
-      const returnUrl = `${req.protocol}://${req.get('host')}/profile`;
-      const paymentsEnabled = process.env.PAYMENTS_ENABLED === 'true';
-
-      if (paymentsEnabled) {
-        const customer = await stripeService.createOrRetrieveCustomer(userId, user.email ?? '', `${user.firstName ?? ''} ${user.lastName ?? ''}`.trim());
-        const portal = await stripeService.createPortalSession({ customerId: customer.id, returnUrl });
-        return res.json({ url: portal.url });
-      }
-
-      // Mock (dev)
-      const mockPortalUrl = `${req.protocol}://${req.get('host')}/profile?portal=true`;
-
-      res.json({ 
-        url: mockPortalUrl,
-        message: 'Mock customer portal (payments not enabled)'
-      });
-    } catch (error) {
-      console.error('Error creating portal session:', error);
-      res.status(500).json({ message: 'Failed to create portal session' });
-    }
-  });
-
-  app.get('/api/stripe/subscription-status', isAuthenticated, async (req: any, res) => {
-    try {
-      const userId = req.user.claims.sub;
-      const user = await storage.getUser(userId);
-
-      if (!user) {
-        return res.status(404).json({ message: 'User not found' });
-      }
-
-      const paymentsEnabled = process.env.PAYMENTS_ENABLED === 'true';
-      if (paymentsEnabled) {
-        // Attempt to find or create customer and return active status
-        const customer = await stripeService.createOrRetrieveCustomer(userId, user.email ?? '', `${user.firstName ?? ''} ${user.lastName ?? ''}`.trim());
-        const subscriptions = await stripeService.getCustomerSubscriptions(customer.id);
-        const hasActiveSubscription = subscriptions.some(s => s.status === 'active' || s.status === 'trialing');
-        return res.json({ hasActiveSubscription, subscriptions });
-      }
-
-      // Mock (dev)
-      res.json({
-        hasActiveSubscription: false,
-        subscriptions: [],
-        message: 'Mock subscription status (payments not enabled)'
-      });
-    } catch (error) {
-      console.error('Error fetching subscription status:', error);
-      res.status(500).json({ message: 'Failed to fetch subscription status' });
-    }
-  });
-
-  app.post('/api/stripe/webhook', async (req, res) => {
-    try {
-      // Note: Stripe webhook handling is stubbed for development
-      // In production, this would handle actual Stripe events
-      console.log('Stripe webhook received (mock):', req.body);
-      res.json({ received: true, message: 'Mock webhook handler' });
-    } catch (error) {
-      console.error('Error handling Stripe webhook:', error);
-      res.status(400).json({ message: 'Webhook handler failed' });
     }
   });
 

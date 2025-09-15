@@ -22,32 +22,63 @@ AutoHired automates your job application process with AI-powered tools, intellig
 - **Data-Driven Insights**: Make informed decisions about your job search strategy
 - **ATS-Compatible**: All applications pass through Applicant Tracking Systems
 
-## 💰 Business Model
+## 💸 Pricing & Access
 
-AutoHired operates on a **freemium SaaS model**:
+We believe in accessible job search tools.
 
-### 🆓 Lite (Free)
-- Manual application tracking
-- Basic job search with filters
-- Resume builder (single template)
-- Limited to 5 applications per month
+* **Pro — $9/month**
+  Unlimited automated applications, AI resume tailoring, analytics, priority support.
 
-### ⚡ Pro ($29/month)
-- Unlimited automated applications
-- AI-powered resume optimization for each job
-- Advanced analytics and success tracking
-- Multiple resume templates
-- Priority support
-- ATS compatibility scoring
+* **Recent Grad / First-Time Job Seeker — Pay-What-You-Want (one-time)**
+  Enter any amount from $0 to infinity.
 
-### 🚀 Enterprise (Custom pricing)
-- White-label solution
-- API access
-- Custom integrations
-- Dedicated support
-- Advanced reporting
+No enterprise tier. No long-term contracts. Cancel anytime.
 
-## 🛠️ Technology Stack
+### How billing works
+
+* **Pro** uses a recurring subscription via Stripe Checkout.
+* **PWYW** uses a one-time payment via Stripe's Payment Element; entering $0 grants access instantly (no payment required).
+* Premium features are available to **Pro** and **PWYW** users alike.
+
+## ▶️ Quick Start
+
+```bash
+# server + client (monorepo root)
+cp .env.example .env   # fill DATABASE_URL, SESSION_SECRET, Stripe keys, etc.
+npm install
+npm run db:push
+npm run build
+npm start  # http://localhost:5000
+```
+
+**Required env:**
+
+```
+PAYMENTS_ENABLED=true
+PREMIUM_ENABLED=true
+STRIPE_SECRET_KEY=sk_test_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+VITE_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_PRO_MONTHLY_PRICE_ID=price_for_9usd
+```
+
+## 🔒 Feature Gating
+
+* **Free:** limited to 5 applications/month.
+* **Premium (Pro or PWYW):** unlimited apps, resume tailoring, analytics.
+
+## ♿ Accessibility
+
+Billing UI uses semantic form controls (`<fieldset>`, labels, ARIA), keyboard-friendly focus order, and high-contrast defaults. PWYW supports screen readers and numeric entry with visible and sr-only labels.
+
+## 🧪 Testing billing locally
+
+```bash
+stripe listen --events checkout.session.completed,customer.subscription.created,customer.subscription.updated,customer.subscription.deleted,payment_intent.succeeded --forward-to localhost:5000/api/stripe/webhook
+# Pro card: 4242 4242 4242 4242
+```
+
+## ??? Technology Stack
 
 - **Frontend**: React 18 + TypeScript, Vite, shadcn/ui, Tailwind CSS
 - **Backend**: Express.js + TypeScript, Drizzle ORM
@@ -57,53 +88,11 @@ AutoHired operates on a **freemium SaaS model**:
 - **Deployment**: Vercel (frontend) + Railway (backend)
 - **Queue System**: Bull Queue for job processing
 
-## 💻 Development Setup (Contributors Only)
-
-> **⚠️ Note**: This setup is for development and contribution purposes only. Production deployment requires a commercial license.
-
-### Prerequisites
-- Node.js 18+
-- PostgreSQL database
-- Firebase project
-- Stripe account (for payment testing)
-
-### Quick Start
-```bash
-# Clone the repository
-git clone https://github.com/TheSolutionDeskAndCompany/AutoHired.git
-cd AutoHired
-
-# Install dependencies
-npm install
-
-# Copy environment template
-cp .env.example .env
-
-# Configure your .env file with:
-# - DATABASE_URL (PostgreSQL)
-# - Firebase credentials
-# - Stripe test keys
-
-# Set up database
-npm run db:push
-
-# Start development server
-npm run dev
-```
-
-### Development Commands
-```bash
-npm run dev      # Start dev server with hot reload
-npm run build    # Build for production
-npm run check    # TypeScript type checking
-npm run db:push  # Push database schema changes
-```
-
-## 🚀 Official Service
+## ?? Official Service
 
 **Want to use AutoHired without the hassle of self-hosting?**
 
-✨ [Join our waitlist](mailto:info@thesolutiondesk.ca?subject=AutoHired%20Waitlist) to be first in line when we launch!
+? [Join our waitlist](mailto:info@thesolutiondesk.ca?subject=AutoHired%20Waitlist) to be first in line when we launch!
 
 - No setup required
 - Always up-to-date
@@ -111,18 +100,18 @@ npm run db:push  # Push database schema changes
 - Professional support
 - Advanced features not available in open source
 
-## 📜 License
+## ?? License
 
 This project is source-available under a custom license. See [LICENSE](./LICENSE) for details.
 
-- ✅ **Personal/Educational Use**: Freely view, study, and modify the code
-- ✅ **Contributions**: Pull requests welcome!
-- ❌ **Commercial Hosting**: Not permitted without a commercial license
-- ❌ **SaaS Competition**: Not permitted
+- ? **Personal/Educational Use**: Freely view, study, and modify the code
+- ? **Contributions**: Pull requests welcome!
+- ? **Commercial Hosting**: Not permitted without a commercial license
+- ? **SaaS Competition**: Not permitted
 
 [Contact us](mailto:info@thesolutiondesk.ca) for commercial licensing inquiries.
 
-## 📞 Contact & Support
+## ?? Contact & Support
 
 - **Business Inquiries**: [info@thesolutiondesk.ca](mailto:info@thesolutiondesk.ca)
 - **Waitlist Signup**: [Join Here](mailto:info@thesolutiondesk.ca?subject=AutoHired%20Waitlist)
@@ -131,4 +120,4 @@ This project is source-available under a custom license. See [LICENSE](./LICENSE
 
 ---
 
-**🎆 Ready to 10x your job search? [Join the waitlist](mailto:info@thesolutiondesk.ca?subject=AutoHired%20Waitlist) today!**
+**?? Ready to 10x your job search? [Join the waitlist](mailto:info@thesolutiondesk.ca?subject=AutoHired%20Waitlist) today!**

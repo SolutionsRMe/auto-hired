@@ -1,5 +1,5 @@
-import { isPremium } from "@/lib/isPremium";
 import React, { ReactNode, useEffect } from "react";
+import { useSubscription } from "@/hooks/useSubscription";
 
 interface PremiumGateProps {
   children: ReactNode;
@@ -7,11 +7,13 @@ interface PremiumGateProps {
 }
 
 const PremiumGate = ({ children, fallback }: PremiumGateProps) => {
-  useEffect(() => {
-    if (!isPremium()) console.log("User hit premium wall:", location.pathname);
-  }, []);
+  const { isPremium } = useSubscription();
 
-  return isPremium() ? <>{children}</> : <>{fallback ?? <UpgradePrompt />}</>;
+  useEffect(() => {
+    if (!isPremium) console.log("User hit premium wall:", location.pathname);
+  }, [isPremium]);
+
+  return isPremium ? <>{children}</> : <>{fallback ?? <UpgradePrompt />}</>;
 };
 
 const UpgradePrompt = () => (

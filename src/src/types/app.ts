@@ -1,14 +1,15 @@
-export type Plan = 'pro_monthly' | 'pro_yearly' | null;
-
-export interface Subscription {
-  active: boolean;
-  plan: Plan;
-}
+export type Plan = 'free' | 'pro' | 'pwyw';
 
 export interface Me {
   id: string;
-  email: string;
-  subscription: Subscription;
+  email?: string;
+  firstName?: string | null;
+  lastName?: string | null;
+  plan: Plan;
+  subscriptionStatus?: string | null;
+  currentPeriodEnd?: string | null;
+  pwywAmountCents?: number | null;
+  pwywGrantedAt?: string | null;
 }
 
 export interface Application {

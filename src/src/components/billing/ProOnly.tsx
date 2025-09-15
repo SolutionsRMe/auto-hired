@@ -5,8 +5,8 @@ import { Link } from "wouter";
 import { useSubscription } from "@/hooks/useSubscription";
 
 export const ProOnly: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { isPro } = useSubscription();
-  if (!isPro) return <UpgradeCallout />;
+  const { isPremium } = useSubscription();
+  if (!isPremium) return <UpgradeCallout />;
   return <>{children}</>;
 };
 

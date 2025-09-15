@@ -1,11 +1,12 @@
 import Stripe from 'stripe';
+import { storage } from './storage';
 
 if (!process.env.STRIPE_SECRET_KEY) {
   throw new Error('STRIPE_SECRET_KEY environment variable is required');
 }
 
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2024-12-18.acacia',
+  apiVersion: '2024-06-20',
   typescript: true,
 });
 
@@ -99,27 +100,100 @@ export class StripeService {
   /**
    * Create or retrieve customer
    */
-  async createOrRetrieveCustomer(userId: string, email: string, name?: string): Promise<Stripe.Customer> {
-    // First try to find existing customer by email
-    const existingCustomers = await stripe.customers.list({
-      email: email,
-      limit: 1,
-    });
+  async createOrRetrieveCustomer(userId: string, email?: string, name?: string): Promise<Stripe.Customer> {
+    const user = await storage.getUser(userId);
+    const existingId = user?.stripeCustomerId;
 
-    if (existingCustomers.data.length > 0) {
-      return existingCustomers.data[0];
+    if (existingId) {
+      try {
+        const customer = await stripe.customers.retrieve(existingId);
+        if (!('deleted' in customer && customer.deleted)) {
+          return customer as Stripe.Customer;
+        }
+      } catch (error) {
+        console.warn('Existing Stripe customer lookup failed, creating new one', error);
+      }
     }
 
-    // Create new customer
     const customer = await stripe.customers.create({
-      email: email,
-      name: name,
+      email,
+      name,
       metadata: {
-        userId: userId,
+        userId,
       },
     });
 
+    await storage.updateUser(userId, { stripeCustomerId: customer.id });
+
     return customer;
+  }
+
+  /**
+   * Ensure a customer exists in Stripe, or create one if not
+   */
+  async ensureCustomer(user: any): Promise<Stripe.Customer> {
+    const userId = user?.id || user?.claims?.sub;
+    if (!userId) {
+      throw new Error('User id is required to ensure a Stripe customer');
+    }
+
+    const storedUser = await storage.getUser(userId);
+    const candidates = [user?.stripeCustomerId, storedUser?.stripeCustomerId].filter(Boolean) as string[];
+
+    for (const candidate of candidates) {
+      try {
+        const customer = await stripe.customers.retrieve(candidate);
+        if (!('deleted' in customer && customer.deleted)) {
+          if (!storedUser?.stripeCustomerId) {
+            await storage.updateUser(userId, { stripeCustomerId: candidate });
+          }
+          return customer as Stripe.Customer;
+        }
+      } catch (error) {
+        console.warn('Stored Stripe customer lookup failed, creating new record', error);
+      }
+    }
+
+    const email = user?.email ?? storedUser?.email ?? undefined;
+    const firstName = user?.firstName ?? storedUser?.firstName ?? '';
+    const lastName = user?.lastName ?? storedUser?.lastName ?? '';
+    const name = [firstName, lastName].filter(Boolean).join(' ') || undefined;
+
+    const customer = await stripe.customers.create({
+      email,
+      name,
+      metadata: { userId },
+    });
+
+    await storage.updateUser(userId, { stripeCustomerId: customer.id });
+
+    return customer;
+  }
+
+    // Create new customer
+    const customer = await stripe.customers.create({
+      email: user.email,
+      name: [user.firstName, user.lastName].filter(Boolean).join(' '),
+      metadata: { userId: user.id },
+    });
+
+    // In a real app, save the stripeCustomerId to your database
+    // await storage.users.update(user.id, { stripeCustomerId: customer.id });
+    
+    return customer;
+  }
+
+  /**
+   * Create a PaymentIntent for PWYW (Pay What You Want) flow
+   */
+  async createPaymentIntent(amount: number, customerId: string, metadata: Record<string, string> = {}) {
+    return await stripe.paymentIntents.create({
+      amount,
+      currency: 'usd',
+      customer: customerId,
+      metadata,
+      automatic_payment_methods: { enabled: true },
+    });
   }
 
   /**

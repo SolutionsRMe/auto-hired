@@ -30,6 +30,8 @@ export interface IStorage {
   // User operations (mandatory for Replit Auth)
   getUser(id: string): Promise<User | undefined>;
   upsertUser(user: UpsertUser): Promise<User>;
+  updateUser(id: string, data: Partial<UpsertUser>): Promise<User | undefined>;
+  updateUserByCustomerId(customerId: string, data: Partial<UpsertUser>): Promise<User | undefined>;
 
   // Resume Profile operations
   getResumeProfile(userId: string): Promise<ResumeProfile | undefined>;
@@ -85,6 +87,28 @@ export class DatabaseStorage implements IStorage {
       })
       .returning();
     return user;
+  }
+
+  async updateUser(id: string, data: Partial<UpsertUser>): Promise<User | undefined> {
+    const [updated] = await db
+      .update(users)
+      .set({ ...data, updatedAt: new Date() })
+      .where(eq(users.id, id))
+      .returning();
+    return updated;
+  }
+
+  async updateUserByCustomerId(customerId: string, data: Partial<UpsertUser>): Promise<User | undefined> {
+    if (!customerId) {
+      return undefined;
+    }
+
+    const [updated] = await db
+      .update(users)
+      .set({ ...data, updatedAt: new Date() })
+      .where(eq(users.stripeCustomerId, customerId))
+      .returning();
+    return updated;
   }
 
   // Resume Profile operations

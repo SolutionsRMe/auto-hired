@@ -33,6 +33,13 @@ export const users = pgTable("users", {
   firstName: varchar("first_name"),
   lastName: varchar("last_name"),
   profileImageUrl: varchar("profile_image_url"),
+  stripeCustomerId: varchar("stripe_customer_id").unique(),
+  plan: varchar("plan").notNull().default("free"), // 'free' | 'pro' | 'pwyw'
+  subscriptionStatus: varchar("subscription_status"),
+  currentPeriodEnd: timestamp("current_period_end"),
+  // PWYW support
+  pwywAmountCents: integer("pwyw_amount_cents"),   // nullable; set on successful one-time payment
+  pwywGrantedAt: timestamp("pwyw_granted_at"),     // set when access is granted (even if $0)
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });
@@ -186,7 +193,14 @@ export const userPreferencesRelations = relations(userPreferences, ({ one }) => 
 
 // Schema types
 export type UpsertUser = typeof users.$inferInsert;
-export type User = typeof users.$inferSelect;
+export type User = Omit<typeof users.$inferSelect, 'plan'> & {
+  plan: 'free' | 'pro' | 'pwyw';
+  stripeCustomerId?: string;
+  subscriptionStatus?: string;
+  currentPeriodEnd?: Date;
+  pwywAmountCents?: number;
+  pwywGrantedAt?: Date;
+};
 
 export const insertResumeProfileSchema = createInsertSchema(resumeProfiles).omit({
   id: true,

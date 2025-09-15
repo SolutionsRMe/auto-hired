@@ -27,9 +27,10 @@ export default function WorkExperienceForm({ resumeProfileId }: WorkExperienceFo
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const { data: experiences = [], isLoading } = useQuery({
+  const { data: experiences = [], isLoading } = useQuery<any[]>({
     queryKey: [`/api/work-experience/${resumeProfileId}`],
     enabled: !!resumeProfileId,
+    queryFn: () => fetch(`/api/work-experience/${resumeProfileId}`).then(r => r.json()),
   });
 
   const createMutation = useMutation({

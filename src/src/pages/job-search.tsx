@@ -23,8 +23,9 @@ export default function JobSearch() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const { data: jobsData, isLoading } = useQuery({
+  const { data: jobsData, isLoading } = useQuery<{ data: any[]; total: number }>({
     queryKey: ["/api/jobs", { page, limit: 10, ...filters }],
+    queryFn: () => fetch(`/api/jobs?page=${page}&limit=10&search=${encodeURIComponent(filters.search)}&location=${encodeURIComponent(filters.location)}&salaryMin=${encodeURIComponent(filters.salaryMin)}&salaryMax=${encodeURIComponent(filters.salaryMax)}&remote=${filters.remote}`).then(r => r.json()),
   });
 
   const quickApplyMutation = useMutation({
@@ -174,7 +175,7 @@ export default function JobSearch() {
               <ChevronLeft className="w-4 h-4" />
             </Button>
             
-            {[...Array(Math.min(5, totalPages))].map((_, i) => {
+            {[...Array(Math.min(5, totalPages))].map((_, i: number) => {
               const pageNum = Math.max(1, Math.min(totalPages - 4, page - 2)) + i;
               if (pageNum > totalPages) return null;
               

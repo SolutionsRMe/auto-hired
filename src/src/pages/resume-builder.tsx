@@ -15,8 +15,9 @@ export default function ResumeBuilder() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const { data: resumeProfile, isLoading } = useQuery({
+  const { data: resumeProfile, isLoading } = useQuery<any>({
     queryKey: ["/api/resume-profile"],
+    queryFn: () => fetch('/api/resume-profile').then(r => r.json()),
   });
 
   const createResumeMutation = useMutation({

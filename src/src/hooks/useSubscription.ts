@@ -1,14 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-
-async function fetchMe() {
-  const res = await fetch("/api/auth/user");
-  if (!res.ok) throw new Error("Failed to load user");
-  return res.json();
-}
+import type { Me } from "@/types/app";
 
 export function useSubscription() {
-  const { data, isLoading, error } = useQuery({ queryKey: ["me"], queryFn: fetchMe });
-  // Assume API extends user object with subscription info later
+  const { data, isLoading, error } = useQuery<Me>({ 
+    queryKey: ["me"], 
+    queryFn: () => fetch("/api/auth/user").then(r => r.json())
+  });
   const isPro = !!data?.subscription?.active || false;
   return { isPro, user: data, isLoading, error };
 }

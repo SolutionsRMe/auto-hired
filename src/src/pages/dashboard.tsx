@@ -7,16 +7,19 @@ import { NotebookPen, Calendar, TrendingUp, Target, Building, ArrowUp, ArrowDown
 import { Link } from "wouter";
 
 export default function Dashboard() {
-  const { data: stats, isLoading: statsLoading } = useQuery({
+  const { data: stats, isLoading: statsLoading } = useQuery<any>({
     queryKey: ["/api/applications/stats"],
+    queryFn: () => fetch('/api/applications/stats').then(r => r.json()),
   });
 
-  const { data: recentApplications, isLoading: applicationsLoading } = useQuery({
+  const { data: recentApplications, isLoading: applicationsLoading } = useQuery<{ data: any[]; total: number }>({
     queryKey: ["/api/applications", { page: 1, limit: 5 }],
+    queryFn: () => fetch('/api/applications?page=1&limit=5').then(r => r.json()),
   });
 
-  const { data: recommendedJobs, isLoading: jobsLoading } = useQuery({
+  const { data: recommendedJobs, isLoading: jobsLoading } = useQuery<{ data: any[]; total: number }>({
     queryKey: ["/api/jobs", { page: 1, limit: 3 }],
+    queryFn: () => fetch('/api/jobs?page=1&limit=3').then(r => r.json()),
   });
 
   if (statsLoading) {

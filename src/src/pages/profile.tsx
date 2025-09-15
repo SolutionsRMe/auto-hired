@@ -19,8 +19,9 @@ export default function Profile() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const { data: preferences, isLoading: preferencesLoading } = useQuery({
+  const { data: preferences, isLoading: preferencesLoading } = useQuery<any>({
     queryKey: ["/api/preferences"],
+    queryFn: () => fetch('/api/preferences').then(r => r.json()),
   });
 
   const updatePreferencesMutation = useMutation({

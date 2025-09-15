@@ -20,17 +20,19 @@ export default function Applications() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const { data: stats, isLoading: statsLoading } = useQuery({
+  const { data: stats, isLoading: statsLoading } = useQuery<{ total: number; thisWeek: number; interviews: number; responseRate: number; weeklyGoal: number; weeklyProgress: number }>({
     queryKey: ["/api/applications/stats"],
+    queryFn: () => fetch('/api/applications/stats').then(r => r.json()),
   });
 
-  const { data: applicationsData, isLoading: applicationsLoading } = useQuery({
+  const { data: applicationsData, isLoading: applicationsLoading } = useQuery<{ data: any[]; total: number }>({
     queryKey: ["/api/applications", { 
       page, 
       limit: 10, 
       status: statusFilter && statusFilter !== "all" ? statusFilter : undefined,
       search: searchTerm || undefined 
     }],
+    queryFn: () => fetch(`/api/applications?page=${page}&limit=10${statusFilter && statusFilter !== 'all' ? `&status=${statusFilter}` : ''}${searchTerm ? `&search=${encodeURIComponent(searchTerm)}` : ''}`).then(r => r.json()),
   });
 
   const updateApplicationMutation = useMutation({
@@ -212,7 +214,7 @@ export default function Applications() {
               Previous
             </Button>
             
-            {[...Array(Math.min(5, totalPages))].map((_, i) => {
+            {[...Array(Math.min(5, totalPages))].map((_, i: number) => {
               const pageNum = Math.max(1, Math.min(totalPages - 4, page - 2)) + i;
               if (pageNum > totalPages) return null;
               

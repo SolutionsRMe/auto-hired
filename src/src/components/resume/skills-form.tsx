@@ -18,9 +18,10 @@ export default function SkillsForm({ resumeProfileId }: SkillsFormProps) {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const { data: skills = [], isLoading } = useQuery({
+  const { data: skills = [], isLoading } = useQuery<any[]>({
     queryKey: [`/api/skills/${resumeProfileId}`],
     enabled: !!resumeProfileId,
+    queryFn: () => fetch(`/api/skills/${resumeProfileId}`).then(r => r.json()),
   });
 
   const createMutation = useMutation({
@@ -165,7 +166,7 @@ export default function SkillsForm({ resumeProfileId }: SkillsFormProps) {
 
       {/* Skills Display */}
       <div className="space-y-6">
-        {["technical", "soft", "certification"].map((category) => (
+        {["technical", "soft", "certification"].map((category: string) => (
           <div key={category}>
             <h4 className="text-md font-medium text-gray-900 mb-3">
               {getCategoryLabel(category)}

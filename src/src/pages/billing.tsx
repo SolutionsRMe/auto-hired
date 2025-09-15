@@ -17,7 +17,7 @@ export default function Billing() {
               <h3 className="text-xl font-semibold mb-2">{PRICING_PLANS.lite.name}</h3>
               <div className="text-3xl font-bold mb-4">Free</div>
               <ul className="space-y-2 mb-4">
-                {PRICING_PLANS.lite.features.map((f) => (
+                {PRICING_PLANS.lite.features.map((f: string) => (
                   <li key={f} className="flex items-center space-x-2">
                     <Check className="w-4 h-4 text-success" />
                     <span>{f}</span>
@@ -34,7 +34,7 @@ export default function Billing() {
               <h3 className="text-xl font-semibold mb-2">{PRICING_PLANS.pro_monthly.name}</h3>
               <div className="text-3xl font-bold mb-1">${PRICING_PLANS.pro_monthly.price}<span className="text-base font-medium">/mo</span></div>
               <ul className="space-y-2 mb-4">
-                {PRICING_PLANS.pro_monthly.features.map((f) => (
+                {PRICING_PLANS.pro_monthly.features.map((f: string) => (
                   <li key={f} className="flex items-center space-x-2">
                     <Check className="w-4 h-4 text-accent" />
                     <span>{f}</span>

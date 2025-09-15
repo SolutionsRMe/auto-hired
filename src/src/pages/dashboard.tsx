@@ -141,7 +141,7 @@ export default function Dashboard() {
                   <Skeleton className="h-6 w-16" />
                 </div>
               ))
-            ) : recentApplications?.data?.length > 0 ? (
+            ) : (recentApplications?.data?.length ?? 0) > 0 ? (
               recentApplications.data.map((application: any) => (
                 <div key={application.id} className="flex items-center justify-between">
                   <div className="flex items-center space-x-3">
@@ -174,7 +174,7 @@ export default function Dashboard() {
                 <p className="text-sm">Start applying to jobs to see them here</p>
               </div>
             )}
-            {recentApplications?.data?.length > 0 && (
+            {(recentApplications?.data?.length ?? 0) > 0 && (
               <div className="pt-4 border-t border-gray-200">
                 <Link href="/applications">
                   <Button variant="ghost" className="w-full text-primary">
@@ -210,7 +210,7 @@ export default function Dashboard() {
                   </div>
                 </div>
               ))
-            ) : recommendedJobs?.data?.length > 0 ? (
+            ) : (recommendedJobs?.data?.length ?? 0) > 0 ? (
               recommendedJobs.data.slice(0, 2).map((job: any) => (
                 <div key={job.id} className="border border-gray-200 rounded-lg p-4">
                   <div className="flex items-start justify-between mb-2">
@@ -244,7 +244,7 @@ export default function Dashboard() {
                 <p className="text-sm">Complete your profile to get personalized recommendations</p>
               </div>
             )}
-            {recommendedJobs?.data?.length > 0 && (
+            {(recommendedJobs?.data?.length ?? 0) > 0 && (
               <div className="pt-4 border-t border-gray-200">
                 <Link href="/jobs">
                   <Button variant="ghost" className="w-full text-primary">

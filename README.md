@@ -1,70 +1,134 @@
-# AutoHired - Job Application Automation Platform
+# 🚀 AutoHired — Job Application Automation
 
-A comprehensive job application automation platform that empowers job seekers with advanced tracking, AI-powered tools, and an intuitive user interface for streamlining the job search process.
+**Paid SaaS Service in Development** | **Source-Available for Development**
 
-## Features
+> **⚠️ Important**: This is the source code for AutoHired, a commercial SaaS platform. Self-hosting is not supported for production use. [Join our waitlist](mailto:info@thesolutiondesk.ca?subject=AutoHired%20Waitlist) to be notified when the official hosted service launches.
 
-### Lite Version (Free)
-- ✅ Resume Builder
-- ✅ Application Tracking
-- ✅ Basic Job Search
-- ✅ Profile Management
+AutoHired automates your job application process with AI-powered tools, intelligent job matching, and comprehensive tracking. Say goodbye to manual applications and hello to landing your dream job faster.
 
-### Premium Version
-- 🚀 AI Resume Optimization
-- 🚀 Automated Applications
-- 🚀 Advanced Analytics
-- 🚀 Premium Templates
-- 🚀 Priority Support
+## ✨ What AutoHired Does
 
-## Badges
+🎯 **Smart Job Matching** - AI finds the perfect opportunities based on your profile  
+🤖 **Automated Applications** - Apply to dozens of jobs with one click  
+📊 **Advanced Analytics** - Track success rates, response times, and optimize your strategy  
+📝 **AI Resume Optimization** - Automatically tailor your resume for each application  
+⚡ **Bulk Operations** - Manage hundreds of applications effortlessly  
 
-![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Last Commit](https://img.shields.io/badge/last_commit-July_2025-orange)
+## 🏆 Why AutoHired?
 
-## Visuals
+- **10x Faster Applications**: What used to take hours now takes minutes
+- **Higher Success Rates**: AI-optimized applications get more responses
+- **Never Miss an Opportunity**: Automated job scraping finds hidden gems
+- **Data-Driven Insights**: Make informed decisions about your job search strategy
+- **ATS-Compatible**: All applications pass through Applicant Tracking Systems
 
-![AutoHired UI](https://via.placeholder.com/800x400.png?text=AutoHired+UI+Screenshot)
+## 💰 Business Model
 
-## Tech Stack
+AutoHired operates on a **freemium SaaS model**:
 
-- **Frontend**: React 18 + TypeScript with Vite
-- **Backend**: Express.js with TypeScript
-- **Database**: PostgreSQL with Drizzle ORM
-- **Authentication**: Replit OAuth integration
-- **UI**: shadcn/ui components with Tailwind CSS
-- **State Management**: TanStack Query
+### 🆓 Lite (Free)
+- Manual application tracking
+- Basic job search with filters
+- Resume builder (single template)
+- Limited to 5 applications per month
 
-## Development Setup
+### ⚡ Pro ($29/month)
+- Unlimited automated applications
+- AI-powered resume optimization for each job
+- Advanced analytics and success tracking
+- Multiple resume templates
+- Priority support
+- ATS compatibility scoring
 
-1. Clone the repository
-2. Install dependencies: `npm install`
-3. Set up environment variables:
-   - `DATABASE_URL` - PostgreSQL connection string
-   - `SESSION_SECRET` - Session encryption key
-   - `REPL_ID` - Replit app ID
-   - `REPLIT_DOMAINS` - Authorized domains
-4. Push database schema: `npm run db:push`
-5. Start development server: `npm run dev`
+### 🚀 Enterprise (Custom pricing)
+- White-label solution
+- API access
+- Custom integrations
+- Dedicated support
+- Advanced reporting
 
-## Deployment
+## 🛠️ Technology Stack
 
-### GitHub Pages
-This project is configured for GitHub Pages deployment with GitHub Actions.
+- **Frontend**: React 18 + TypeScript, Vite, shadcn/ui, Tailwind CSS
+- **Backend**: Express.js + TypeScript, Drizzle ORM
+- **Database**: PostgreSQL with connection pooling
+- **Authentication**: Firebase Auth (Google Sign-In)
+- **Payments**: Stripe subscriptions
+- **Deployment**: Vercel (frontend) + Railway (backend)
+- **Queue System**: Bull Queue for job processing
 
-1. Push to main branch
-2. GitHub Actions will automatically build and deploy
-3. Access your deployed app at: `https://yourusername.github.io/AutoHired/`
+## 💻 Development Setup (Contributors Only)
 
-### Manual Deployment
-1. Build the project: `npm run build`
-2. Deploy the `dist/public` folder to your hosting provider
+> **⚠️ Note**: This setup is for development and contribution purposes only. Production deployment requires a commercial license.
 
-## License
+### Prerequisites
+- Node.js 18+
+- PostgreSQL database
+- Firebase project
+- Stripe account (for payment testing)
 
-MIT License - see LICENSE file for details
+### Quick Start
+```bash
+# Clone the repository
+git clone https://github.com/TheSolutionDeskAndCompany/AutoHired.git
+cd AutoHired
 
-## Contact
+# Install dependencies
+npm install
 
-For support, email: info@thesolutiondesk.ca
+# Copy environment template
+cp .env.example .env
+
+# Configure your .env file with:
+# - DATABASE_URL (PostgreSQL)
+# - Firebase credentials
+# - Stripe test keys
+
+# Set up database
+npm run db:push
+
+# Start development server
+npm run dev
+```
+
+### Development Commands
+```bash
+npm run dev      # Start dev server with hot reload
+npm run build    # Build for production
+npm run check    # TypeScript type checking
+npm run db:push  # Push database schema changes
+```
+
+## 🚀 Official Service
+
+**Want to use AutoHired without the hassle of self-hosting?**
+
+✨ [Join our waitlist](mailto:info@thesolutiondesk.ca?subject=AutoHired%20Waitlist) to be first in line when we launch!
+
+- No setup required
+- Always up-to-date
+- Guaranteed uptime
+- Professional support
+- Advanced features not available in open source
+
+## 📜 License
+
+This project is source-available under a custom license. See [LICENSE](./LICENSE) for details.
+
+- ✅ **Personal/Educational Use**: Freely view, study, and modify the code
+- ✅ **Contributions**: Pull requests welcome!
+- ❌ **Commercial Hosting**: Not permitted without a commercial license
+- ❌ **SaaS Competition**: Not permitted
+
+[Contact us](mailto:info@thesolutiondesk.ca) for commercial licensing inquiries.
+
+## 📞 Contact & Support
+
+- **Business Inquiries**: [info@thesolutiondesk.ca](mailto:info@thesolutiondesk.ca)
+- **Waitlist Signup**: [Join Here](mailto:info@thesolutiondesk.ca?subject=AutoHired%20Waitlist)
+- **Bug Reports**: [GitHub Issues](https://github.com/TheSolutionDeskAndCompany/AutoHired/issues)
+- **Feature Requests**: [GitHub Discussions](https://github.com/TheSolutionDeskAndCompany/AutoHired/discussions)
+
+---
+
+**🎆 Ready to 10x your job search? [Join the waitlist](mailto:info@thesolutiondesk.ca?subject=AutoHired%20Waitlist) today!**

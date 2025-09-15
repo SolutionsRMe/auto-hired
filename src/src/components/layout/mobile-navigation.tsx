@@ -10,8 +10,8 @@ export default function MobileNavigation() {
     { path: "/", icon: Home, label: "Dashboard" },
     { path: "/resume", icon: FileText, label: "Resume" },
     { path: "/jobs", icon: Search, label: "Jobs" },
-    { path: "/applications", icon: ClipboardList, label: "Applications" },
-    { path: "/profile", icon: User, label: "Profile" },
+    { path: "/applications", icon: ClipboardList, label: "Apps" },
+    { path: "/billing", icon: User, label: "Billing" },
   ];
 
   return (

@@ -11,6 +11,8 @@ export default function DesktopSidebar() {
     { path: "/resume", icon: FileText, label: "Resume Builder" },
     { path: "/jobs", icon: Search, label: "Job Search" },
     { path: "/applications", icon: ClipboardList, label: "Applications" },
+    // Pro-only navigation item (Automation) would be conditionally rendered elsewhere
+    { path: "/billing", icon: User, label: "Billing" },
     { path: "/profile", icon: User, label: "Profile" },
   ];
 

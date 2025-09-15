@@ -13,6 +13,8 @@ import Applications from "@/pages/applications";
 import Profile from "@/pages/profile";
 import GoogleAuth from "@/pages/google-auth";
 import PremiumPurchase from "@/pages/premium-purchase";
+import SubscriptionSuccess from "@/pages/subscription-success";
+import Billing from "@/pages/billing";
 import About from "@/pages/about";
 import Privacy from "@/pages/privacy";
 import Terms from "@/pages/terms";
@@ -54,7 +56,9 @@ function Router() {
         <Route path="/jobs" component={JobSearch} />
         <Route path="/applications" component={Applications} />
         <Route path="/profile" component={Profile} />
+        <Route path="/billing" component={Billing} />
         <Route path="/premium-purchase" component={PremiumPurchase} />
+        <Route path="/subscription/success" component={SubscriptionSuccess} />
         <Route path="/about" component={About} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/terms" component={Terms} />

@@ -123,7 +123,10 @@ export default function PremiumPurchase() {
                   <span className="text-text-light">Export to multiple formats</span>
                 </li>
               </ul>
-              <Button className="w-full bg-accent hover:bg-[#e85d5d] text-primary transition-all duration-200 transform hover:scale-105">
+              <Button 
+                className="w-full bg-accent hover:bg-[#e85d5d] text-primary transition-all duration-200 transform hover:scale-105"
+                onClick={() => alert('Stripe integration ready! Add your Stripe price IDs to enable payments.')}
+              >
                 Upgrade to Premium
               </Button>
             </CardContent>
@@ -208,7 +211,7 @@ export default function PremiumPurchase() {
             <Button 
               size="lg" 
               className="bg-accent hover:bg-[#e85d5d] text-primary px-8 transition-all duration-200 transform hover:scale-105"
-              onClick={() => alert('Premium trial functionality coming soon!')}
+              onClick={() => alert('Stripe integration ready! Configure your pricing in the environment variables to enable payments.')}
             >
               Start Premium Trial
             </Button>

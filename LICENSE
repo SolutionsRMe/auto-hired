@@ -1,40 +1,166 @@
-AutoHired Source-Available License
+========================
+FILE: LICENSE
+========================
 
-Copyright (c) 2025 TheSolutionDeskAndCompany
+AutoHired Source-Available License v1.0
 
-## Permitted Uses
+Copyright (c) 2026 The Solution Desk & Company
 
-You are permitted to:
-- View, study, and modify the source code for personal or educational purposes
-- Contribute improvements back to the project via pull requests
-- Run the software for personal, non-commercial development and testing
-- Deploy the software for internal business use within a single organization
+This software is source-available, not open source.
 
-## Restrictions
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the “Software”), to use,
+copy, modify, and run the Software for PERSONAL, EDUCATIONAL, or INTERNAL
+EVALUATION purposes only, subject to the following conditions:
 
-You are NOT permitted to:
-- Offer the software as a hosted service or SaaS platform to third parties
-- Redistribute the software or derivative works commercially
-- Use the software to compete directly with the official AutoHired service
-- Remove or modify this license or copyright notices
+You MAY:
+- View and inspect the source code
+- Run the Software locally
+- Modify the Software for personal or internal use
+- Submit contributions back to the official repository
 
-## Commercial Use
+You MAY NOT:
+- Deploy, host, or operate the Software as a service for third parties
+- Offer the Software as a hosted product, SaaS, or API
+- Sell, sublicense, white-label, or redistribute the Software
+- Create a competing product or service based on the Software
 
-For commercial hosting, resale, or SaaS deployment of this software, you must:
-1. Contact info@thesolutiondesk.ca for a commercial license
-2. Use the official AutoHired hosted service at [to be announced]
+Contributions:
+Any contribution intentionally submitted for inclusion in the Software
+shall be licensed under the same terms as this license, without additional
+restrictions.
 
-## Disclaimer
+Termination:
+Any violation of the above restrictions automatically terminates your rights
+under this license.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+No Warranty:
+THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+LIABILITY.
 
-## Contributing
+Commercial licensing inquiries:
+info@thesolutiondesk.ca
 
-By contributing to this project, you agree that your contributions will be
-licensed under the same terms as this license.
+
+========================
+FILE: CONTRIBUTING.md
+========================
+
+# Contributing to AutoHired
+
+Thanks for your interest in contributing.
+
+AutoHired is a **source-available** project. Contributions are welcome, but
+the project is not open source and is not intended for third-party hosting
+or resale.
+
+## What Contributions Are Welcome
+
+- Bug fixes
+- Code quality improvements
+- Documentation improvements
+- Clearly scoped feature enhancements
+
+If you’re unsure whether a feature fits the project’s direction, open a
+Discussion first.
+
+## Contribution Rules
+
+Before submitting a pull request:
+
+1. Ensure the code builds and type checks pass
+2. Do not include secrets, credentials, or production configs
+3. Keep changes focused and explain intent clearly
+4. Match existing project conventions
+
+By submitting a contribution, you agree that:
+- Your contribution may be modified or rejected
+- Your contribution will be licensed under the project LICENSE
+- You are not granted any additional rights to host or commercialize AutoHired
+
+## How to Contribute
+
+- Bugs → GitHub Issues
+- Ideas → GitHub Discussions
+- Code → Pull Request against `main`
+
+## Security Issues
+
+Do NOT open public issues for security vulnerabilities.
+See `SECURITY.md` for reporting instructions.
+
+
+========================
+FILE: DEVELOPMENT.md
+========================
+
+# AutoHired — Development Guide
+
+This document describes how to work on AutoHired locally and how the project
+is structured.
+
+This guide is for development, evaluation, and contribution only.
+
+## Scope & Intent
+
+AutoHired is being developed as a hosted product.
+This repository exists to support development and collaboration — not
+third-party SaaS deployment.
+
+See `LICENSE` for binding terms.
+
+## Tech Stack
+
+- TypeScript
+- Vite (frontend)
+- Node.js (backend)
+- Drizzle ORM (database)
+
+## Repository Structure
+
+/
+├─ src/                  Frontend application
+├─ packages/
+│  ├─ server/             Backend server
+│  ├─ core/               Shared logic & types
+│  └─ *-client/           Client variants (if applicable)
+├─ drizzle/               Database schema & migrations
+├─ .env.example
+├─ README.md
+├─ DEVELOPMENT.md
+
+## Local Development
+
+Requirements:
+- Node.js 18+
+- npm
+
+Setup:
+
+1. cp .env.example .env
+2. npm install
+3. npm run dev
+
+The application runs locally in development mode only.
+
+## Common Scripts
+
+- npm run dev        Start dev environment
+- npm run build      Local production build
+- npm run start      Run built app locally
+- npm run check      TypeScript checks
+- npm run db:push    Push schema via drizzle-kit
+
+## Development Conventions
+
+- Prefer explicit, readable code over clever abstractions
+- Type boundaries matter — be clear at module edges
+- If behavior is non-obvious, document it
+
+## Final Note
+
+If something feels under-documented, it probably is.
+Improving clarity is a valid contribution.
